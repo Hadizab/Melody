@@ -4852,6 +4852,39 @@ document.addEventListener('keydown', function(e) {
         alert('Screenshots are disabled on this website.');
     }
 });
+<script>
+    // ADD THIS RIGHT AFTER YOUR FUNCTIONS
+    // Show homepage by default when page loads
+    document.addEventListener("DOMContentLoaded", () => {
+      goHome(); // This ensures homepage is visible on load
+      
+      // Your existing auto-format code
+      document.querySelectorAll(".poem-text").forEach(poem => {
+        const text = poem.textContent.trim();
+        const withParagraphs = text
+          .split("\n\n")
+          .map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`)
+          .join("");
+        poem.innerHTML = withParagraphs;
+      });
+    });
+    
+    function openPoem(id) {
+      document.getElementById("home").style.display = "none";
+      document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0,0);
+    }
+
+    function goHome() {
+      document.getElementById("home").style.display = "grid";
+      document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
+      window.scrollTo(0,0);
+    }
+    
+    // ... rest of your protection code
+</script>
   </script>
 </body>
 </html>
+
