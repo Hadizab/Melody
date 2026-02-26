@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset */
+  /* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -24,45 +24,40 @@ body {
   position: relative;
 }
 
-/* Chapter wrapper */
-.poem-page {
-  margin-bottom: 4rem; /* gap between chapters */
-}
-
 /* Chapter titles */
 .poem-page h2, 
 .poem-page h1 {
-  margin-bottom: 2rem; /* double gap between title and body */
+  margin-bottom: 2rem;
   text-align: center;
   font-family: "Playfair Display", serif;
   font-size: 2rem;
   color: #b30000;
 }
 
-/* Prose paragraphs (default body text) */
+/* Prose paragraphs */
 .poem-page p {
   margin-bottom: 1.2rem;
   line-height: 1.8;
-  font-style: normal;     /* prose is normal */
-  text-align: left;       /* aligned left */
+  font-style: normal;
+  text-align: left;
 }
 
 /* Poem & song block */
 .poem-text {
-  margin: 2.5rem 0;        /* space before and after poems */
+  margin: 2.5rem 0;
   padding: 1.5rem;
-  border-left: 4px solid #b30000; /* accent bar */
+  border-left: 4px solid #b30000;
   background: #f9f9f9;
   font-family: "Georgia", serif;
-  font-style: italic;      /* only poems italic */
-  text-align: left;        /* keep alignment left */
+  font-style: italic;
+  text-align: left;
   white-space: pre-line;
 }
 
 /* Poem stanzas */
 .poem-text p {
   margin-bottom: 1rem;
-  text-align: left;        /* poems stay left-aligned */
+  text-align: left;
   line-height: 1.8;
 }
 
@@ -96,8 +91,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5); /* black overlay */
-  z-index: -1; /* sits behind the text */
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
 }
 
 .hero h1 {
@@ -150,7 +145,7 @@ body::before {
   color: #555;
 }
 
-/* Poem Page */
+/* Poem Page - Hidden by default */
 .poem-page {
   max-width: 700px;
   margin: 2rem auto;
@@ -164,10 +159,12 @@ body::before {
   display: none;
 }
 
+/* Poem Page - Shown when active */
 .poem-page.active {
   display: block;
 }
 
+/* Back button */
 .back-btn {
   display: inline-block;
   margin-top: 1.5rem;
@@ -176,6 +173,7 @@ body::before {
   font-weight: bold;
   cursor: pointer;
 }
+
 .back-btn:hover {
   text-decoration: underline;
 }
@@ -188,25 +186,11 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
 }
-/* Change this */
-.poem-page {
-  display: none;
-}
 
-/* To this */
-.poem-page {
-  display: none;
-}
-
-/* And make sure home is visible by default */
-#home {
-  display: grid !important; /* Force show on load */
-}
-/* Ensure homepage is visible by default */
+/* FORCE HOMEPAGE TO SHOW ON LOAD */
 #home {
   display: grid !important;
 }
-
 </style>
 </head>
 <body>
@@ -4867,6 +4851,7 @@ AWARDS
   </script>
 </body>
 </html>
+
 
 
 
