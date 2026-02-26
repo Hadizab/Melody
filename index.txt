@@ -1,0 +1,4857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melody: Greatest Hits</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", serif;
+  background: #fff;
+  color: #000;
+  line-height: 1.7;
+  position: relative;
+}
+
+/* Chapter wrapper */
+.poem-page {
+  margin-bottom: 4rem; /* gap between chapters */
+}
+
+/* Chapter titles */
+.poem-page h2, 
+.poem-page h1 {
+  margin-bottom: 2rem; /* double gap between title and body */
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: #b30000;
+}
+
+/* Prose paragraphs (default body text) */
+.poem-page p {
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  font-style: normal;     /* prose is normal */
+  text-align: left;       /* aligned left */
+}
+
+/* Poem & song block */
+.poem-text {
+  margin: 2.5rem 0;        /* space before and after poems */
+  padding: 1.5rem;
+  border-left: 4px solid #b30000; /* accent bar */
+  background: #f9f9f9;
+  font-family: "Georgia", serif;
+  font-style: italic;      /* only poems italic */
+  text-align: left;        /* keep alignment left */
+  white-space: pre-line;
+}
+
+/* Poem stanzas */
+.poem-text p {
+  margin-bottom: 1rem;
+  text-align: left;        /* poems stay left-aligned */
+  line-height: 1.8;
+}
+
+/* Watermark hearts */
+body::before {
+  content: "♥ ♥ ♥";
+  font-size: 10rem;
+  color: rgba(255, 0, 0, 0.05);
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  z-index: -1;
+  transform: rotate(-20deg);
+  white-space: nowrap;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  background: url('https://picsum.photos/1200/400') no-repeat center/cover;
+  text-align: center;
+  color: white;
+  padding: 5rem 1rem;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* black overlay */
+  z-index: -1; /* sits behind the text */
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+/* Poem Grid */
+.poem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.poem-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.poem-card:hover {
+  transform: scale(1.02);
+}
+
+.poem-card h2 {
+  margin-bottom: 0.5rem;
+  color: #b30000;
+}
+
+.preview {
+  font-style: italic;
+  color: #555;
+}
+
+/* Poem Page */
+.poem-page {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  white-space: pre-line;
+  display: none;
+}
+
+.poem-page.active {
+  display: block;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: #b30000;
+  font-weight: bold;
+  cursor: pointer;
+}
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #eee;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Melody: Greatest Hits ✨</h1>
+    <p>A Heartfelt Memoire of an African Rockstar!</p>
+  </header>
+
+  <!-- Homepage -->
+  <main id="home" class="poem-grid">
+    <article class="poem-card" onclick="openPoem('poem1')">
+      <h2> Chapter 0: PROLOGUE </h2> 
+      <p class="preview"> November 7, 2014. A star had just fallen,...</p>
+    </article>
+
+<article class="poem-card" onclick="openPoem('poem2')">
+      <h2>Chapter 1: ORIGINS</h2>
+      <p class="preview"> ME: Funke Adeniran, fondly known as Funke by fans worldwide...</p>
+    </article>
+
+    <article class="poem-card" onclick="openPoem('poem3')">
+      <h2>Chapter 2: DISCOVERY</h2>
+      <p class="preview">Beneath the silver glow, silence whispers...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem4')">
+      <h2> Chapter 3: SUCCESS</h2>
+      <p class="preview"> ME:	She immediately started working on her second album...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem5')">
+      <h2>Chapter 4: BREAKTHROUGH</h2>
+      <p class="preview"> ME:	Funke immediately set about putting together her album....</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem6')">
+      <h2>
+Chapter 5: STARDOM</h2>
+      <p class="preview"> ME:	On the 27th of November 2003, her manager Dr. Ayo...</p>
+    </article>
+    
+      <article class="poem-card" onclick="openPoem('poem7')">
+       <h2>Chapter 6: BRIGHT LIGHTS</h2>
+      <p class="preview"> ME:	Funke was offered a lucrative music contract with a...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem8')">
+      <h2>Chapter 7: CHOCOLATE DREAMS</h2>
+      <p class="preview"> ME:	Following the huge success of their album – “Keeping Faith”...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem9')">
+      <h2>Chapter 8: NEW SCARS</h2>
+      <p class="preview"> ME:	In 2009, Funke started to invest in various things...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem10')">
+      <h2>Chapter 9: GREY SKIES</h2>
+      <p class="preview"> ME:	By the end of 2010 Funke was more famous...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem11')">
+      <h2>Chapter 10: SPLIT NOTES </h2>
+      <p class="preview"> ME:	In 2011, Funke released a double album...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem12')">
+      <h2>Chapter 11: BITTER/SWEET</h2>
+      <p class="preview"> ME:	The 'Bitter/Sweet’ Album sold more than three...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem13')">
+      <h2> Chapter 12: LOVE AND LOSS</h2>
+      <p class="preview"> ME:	Later that year, she started writing songs...</p>
+    </article>
+    
+    <article class="poem-card" onclick="openPoem('poem14')">
+      <h2> Chapter 13: MELODY FOREVER</h2>
+      <p class="preview"> ME:	After six months of searching, the party...</p>
+    </article>
+      </main>
+
+  <!-- Poem Pages -->
+
+
+
+
+  <section id="poem1" class="poem-page">
+    <h2> Chapter 0: PROLOGUE </h2>
+    <div class="poem-text">
+
+      November 7, 2014. A star had just fallen, literally. Her name was Funke Adeniran. It was on all the major news channels. CNN, BBC, FOX, ALJAZEERA, even the local news channels in Nigeria including the NTA and CHANNELS TV were all alive with the news. The internet was also buzzing. Several social media sites including Facebook and Twitter were alive with millions of fan postings and condolence messages. The mega superstar Funke Adeniran A.K.A Melody had just died. She was on her way back to the United States of America after a family visit to Nigeria. There had been no official confirmation on whether or not she had really died, but her private jet; believed to be carrying her and a crew of twelve had crash landed into the Atlantic Ocean shortly after take-off from Murtala Muhammad International airport, Lagos; and rescue teams had been dispatched and had been searching for her remains and that of her crew for hours with no success. So, she was presumed dead.
+
+There were a lot of speculations as to the cause of the crash. Some believed that it was just an accident while many believed otherwise. Whatever the case, Funke was a very successful and mega talented young lady, who broke the barrier between different genre of music, acting, business and fashion. She was a musician, an actress, an entrepreneur, a philanthropist who had helped save thousands of lives and gave comfort to much more, a fashion designer and a model, just to mention a few. A woman with a heart of gold, no wonder many people were in shock at the news of her death.
+
+Fans came out in droves to mourn her and express their love for her. Hundreds of flowers, candy and teddy bears were placed in front of both her Beverly Hills mansion and her recording studio respectively. Many took to social media to express their sadness while some were seen talking to the different news crews hanging around in front of her house. 
+
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+
+
+
+
+
+
+  <section id="poem2" class="poem-page">
+    <h2> Chapter 1: ORIGINS</h2>
+    <div class="poem-text">
+
+      ME: Funke Adeniran, fondly known as Funke by fans worldwide, had a simple beginning. Unlike most grass-to-grace stories, she was born with a silver spoon in her mouth. On the 27th of November 1978, a beautiful baby girl was born to Mr and Mrs Adeniran Oluwale Abiola in Suleja, Niger State, Nigeria. She was called Oluwa-Funke, which meant “God gave me to take care of”. She was the second child and second Daughter. They will later have a baby girl and a boy. Mr Adeniran was the Managing Director of the Federal Ministry of Agriculture in Suleja while his wife was a secretary in the same ministry.
+
+Originally from Ibadan, Oyo state, Nigeria, Mr Adeniran moved to Niger state with his family in 1976, when he got a huge promotion with the ministry he worked with, and the new job required him to move to Suleja. It was the best decision he had ever made and the quiet suburban life in Suleja was one he loved very much for his family.
+
+At a time when most people in the area denied their daughters Western education, Mr Adeniran made sure that all his children, both the girls and the boy went to school.
+
+CYNTHIA BRIGHT (Childhood friend):	Both her parents were educated, and they knew the value of education, so they made sure that they gave their children a chance in the modern world.
+
+ME:	From an early age, Funke displayed her love for music. She would sing and dance all day.
+
+FATHER:	Funke would dance around the house and sing all day. During her birthdays, she would be the one entertaining the family. She loved the attention and got upset if we did not listen. She had learned all the songs on my LPs by the time she was eight.
+
+OLDER SISTER (SOLA):	Oh, she used to be so tuneless. We all had to listen and pretend we liked it otherwise she would be upset, and we would clap afterwards. That made her so happy. 
+
+MOTHER (BUKOLA):	Funke was a very special child. She could sing before she could talk, and she danced before she could even walk. She would grab the edge of a chair and stand up when music was playing and then start to bob her head. That was when she was still crawling. Later she started imitating the music. Even though it was just gibberish, you knew she was singing.
+
+ME:	At the age of two, she was enrolled at the “Play and Learn” Nursery Primary School. Then at age five, she went to “Capital” International Primary and Secondary School, Rafin-sanyi, Suleja; from 1983-1988 where she went by the name Funke Adeniran.
+
+TEACHER (MISS JOY): It was a very exclusive school and only children of and who attended.
+
+ME:	They had excellent teachers, and she was a very smart girl, so she excelled in her studies. She went to school with Cynthia Bright, whom she playfully referred to as Bright Light, her Scottish friend and neighbour. Cynthia and her family moved in next door to them when they were both three years old and they had been friends since then. They became friends with Bisi Adesino when they were six years old. She transferred from another school to theirs and so, they became friends.
+
+BISI: The first day we met. I was being bullied by some girls in our class and Funke and Cynthia came to my rescue. Since then, we have been friends. We grew up together and did everything together. We were the three musketeers.
+
+CYNTHIA:	They would tease me all the time. They called me Bright Light because I was white and had blond hair. Back then, there were very few white people around, so I always stood out. I had to learn to defend myself. Funke thought I was a doll, because I looked exactly like her porcelain Doll. She and Bisi would decorate my hair with beads. They would paint my nails and do all sorts of things to me. At the end of the day, I would look like a Ragamuffin (Laughs). We got along fine. Funke was a very nice girl and I loved her very much. 
+
+ME:	In School, she excelled more in English Language. She loved poetry especially. She was fascinated by the rhythmic aspect of it. She was introduced to poetry in class five at the age of ten. And she was hooked ever since.
+
+FUNKE (NTA AM Express Interview 2005):	I remember being introduced to poetry in Primary 5. I was ten years old then, I think. A new subject was added to our curriculum called literature and, in that subject, we also did poetry. Most students didn’t like the subject because they didn’t understand it, but surprisingly I did. I loved our poetry class. The first day, our teacher read a poem called “Wander - Thirst by Gerald Gould”. She then went on to explain the meaning and why it was written that way. I loved it immediately. Then, she gave us an assignment to do. We were to write a four-lined poem each, on a topic of our choosing. It had to come from our hearts. I stayed up all night trying to think of what to write. Then I looked out of the window at the sky and the stars were just shimmering. Suddenly, I knew what to write.
+
+TEACHER (MISS JOY): She seemed very interested in Poetry. She would ask a lot of questions and she seemed to memorize every poem we read in the class. She was the one student that I could get through to. I gave them an assignment to write a four-lined poem, with the topic of their choosing. The next day, she submitted her poem. It was a wonderful poem that I would never forget:
+
+
+ONCE UPON A STAR
+“I had a dream about the sky and the heavens above,
+Sprinkled with stars and the moon like diamonds,
+I looked up and behold,
+I was the brightest star of them all.”
+
+I thought that no way an eight-year-old could write that. She must have had help from an adult and that wasn’t the whole idea of the class. So, I failed her and gave her an E. Later that day, she came to me and complained about the mark. I told her that I did not ask her to copy somebody else’s poem. She denied doing that, almost crying. So, I told her to write another poem right therein my presence just to prove it, and she did, another four-liner poem describing me in a good way. 
+
+MY TEACHER
+“Smart and beautiful
+Prim and proper
+Wise and knowledge full
+That is my teacher.”
+
+I couldn’t believe it when I read it. It was simply amazing. I didn’t know that I was staring at her with mouth opened until she asked:
+
+“I am in trouble, ma?”
+I said: “Funke, you are a gifted poet. Don’t let anyone discourage you, ever!”
+
+FUNKE: (NTA AM Express Interview 2005):	When she told me that, it felt really good. I never forgot it.
+
+ME:	She introduced Funke to her boyfriend (Now her husband) Phillip, who was the music teacher for the secondary section. He taught Funke how to attach musical notes to the words in her poems. In other words, he was the one who taught her how to sing. He also taught her how to play a piano, a guitar and a Flute.
+
+FUNKE: (NTA AM Express Interview 2005):	We worked during break periods and after school hours we would add one hour or two of practice before going home. I told my parents that I was taking extra lessons and they let me continue.
+
+PHILLIP:	Funke learned fast and was very dedicated. We would spend hours both during and after school hours, practicing. How she was able to cope with her studies is a wonder. We worked on her intonation and rhyme, and within a short time, she could write songs, which she sang during the school’s social events and other inter-school competitions. So, I encouraged her to form a musical group which she did. The group was called “The Soprano Bebs” and it consisted of Funke, Cynthia and Bisi. Funke, of course, was the lead singer of the group and she did well. I was their manager. 
+
+MISS JOY:	My husband was obsessed with the music thing. They would practice all day. Luckily, her parents consented to it. He got her into every competition around. When the Soprano Bebs were created; they were an instant hit in the school. They were like celebrities in the school, and everyone wanted to become their friends. They became very popular. I think that was her first taste of stardom and she carried it well. They looked, dressed, and acted the part. I don’t think anyone is surprised that she became a star in the real world.
+
+FUNKE (NTA AM Express Interview 2005):	At first, when my father found out, he was mad. But I explained to him that it was part of my school activities which would earn me extra marks. I even asked Mr Phillip to go and talk to him and he did. So, my father calmed down and allowed us to continue, but only after Mr Phillip promised him that he would protect our chastity.
+
+ME:	In 1990, at the age of 11, Funke and her band members landed a gig in an interstate music competition called The Young Arewa Musical Talents (YAMT). It was a yearly music competition between the northern states in Nigeria, which targeted primary and secondary school students.
+
+PHILLIP:	It was a huge event, and the girls were very excited. They practised seven hours a day. At first, her father supported us. He built a large tent in the backyard of his house for us to practice in. He even gave us money for instruments and costumes. The girls wrote two songs for the competition.
+
+1.	Castles
+
+CASTLES
+
+VERSE 1
+The castles in the air we built,
+A place of tranquillity and romance.
+Walls so high and thick, 
+No one could hurt us.
+
+VERSE 2
+Beautiful gardens full of roses,
+Wild orchids and fountains,
+Kissed by the sun and nourished by our love,
+It was our very own happily ever after.
+
+CHORUS
+Castles, princes, knights, and gardens.
+Every girl’s dream, every girl’s fantasy.
+Dragons, enemies, threatening to take it all away.
+Where is my prince charming to come and save the day? (2X)
+
+VERSE 3
+But the roses grew thorns,
+And the fountains went dry.
+Our walls came tumbling down,
+And the enemy got in.
+
+VERSE 4
+Our safe heaven now a prison,
+Caught in the battle of our lives.
+Would we fight for our love?
+Or would we just wither away and die. 
+CHORUS
+
+VERSE 5
+While the enemy feast on our corpses,
+Our love transcends time and space.
+It is bigger than the both of us,
+We should not yield so easily.
+
+VERSE 6
+We should go down fighting,
+And let the world know about us.
+We will go down in history as,
+A love story that stood the test of time.
+
+CHORUS
+
+
+BRIDGE
+Save the day.
+Save the girl.
+Save the princess.
+Save our love.
+
+CHORUS (INFINITY)
+
+ME:	It was a sweet pop-inspired love song that worked well with her voice. It hinted at a fairy tale love story that started well but later went bad. It was overflowing with innocence and charm. Funke was the lead singer and Bisi and Cynthia sang the choruses and danced together with her. They hired some kids from their music class to help them play some of the instruments in the background, while they performed a dance routine. Mr Phillip choreographed the dance. 
+
+PHILLIP:	I didn’t even know that I had it in me. But we were on a budget so I dug deep and pulled out all the dance moves that I knew and that I could remember from TV and taught it to them. They carried it well and were quick learners.
+
+We also agreed on the costumes for the day. They were to wear princess-inspired gowns which my wife was going to sew for them using satin and lace. I remember Funke’s was pink, Bisi’s was Yellow and Cynthia’s was blue. They all looked beautiful.
+ME:	The second song that they wrote was called “Secret Admirer.” It had a mid-tempo pop vibe with R&B influences. It hinted of having a crush on someone and not knowing how to tell them. And it was awash with all the innocence and naivety of a teenager.
+
+2.	Secret Admirer
+
+SECRET ADMIRER
+
+VERSE 1
+Dear gorgeous.
+You don’t know who I am, but I had loved you from afar.
+Whenever I see you, my butterflies become restless,
+My speech fails me, and I become dumb.
+When I look into your eyes, I get lost.
+
+VERSE 2
+
+My knees turn to jelly and my heart starts to race,
+My palms become sweaty, and my throat goes dry.
+You might even think that I am a tad mad. 
+For around you, I don’t know how to act.
+
+CHORUS
+
+This is a message from your secret admirer,
+Just to let you know that you are on my mind.
+I have loved you for as long as I can remember,
+And I will cherish you until the end of time.
+
+This is a message from your secret admirer,
+You are the only one I think about night and day.
+Even though you are with another,
+I can’t help loving you anyway.
+
+VERSE 3
+Dear beautiful.
+I don’t know if I will ever get the courage to talk to you.
+But I am hoping you will notice me someday.
+Right now, you are with somebody else, and you might not feel the same.
+But I want you to know that you are special in every way.
+
+VERSE 4
+
+I am so in love with you, but you don’t know it.
+I wanted to talk to you, but my nerves failed me.
+When you smiled at me I couldn’t breathe.
+You have such a hold on me. 
+
+CHORUS
+
+BRIDGE
+Could someone like you love someone like me, I wonder?
+Do I stand a chance when I couldn’t even talk?
+Regardless, I am your secret lover, and I will never break your heart.
+And if you loved me back, we would never be apart.
+
+VERSE 5
+
+Dear precious.
+We have lived a whole lifetime together in my dreams,
+But you don’t even know my name.
+I have written love stories about us in my head.
+To you, I may be a stranger but, in my heart, we are soul mates.
+
+VERSE 6
+I don’t know why I feel the way that I do, I just do.
+Even if I could stop myself, I wouldn’t want to.
+So, I am singing this song to let you know that,
+Even if you don’t feel the same way, I am going to love you forever.
+
+CHORUS (REPEAT)
+
+
+
+
+
+
+
+
+ME:	The songs were amazing and later became part of her first Album in 2001. The practice and rehearsal were innocent enough and I was proud of them. 
+
+On the day of the competition, however, the story was different. Things didn’t go as planned.
+
+
+
+PHILLIP:	I don’t know what happened. I watched them practice. I was there and everything came out simple and innocent. But, somehow on the day of the competition, they appeared more grown up than they were. Their costumes appeared very provocative, and the words of the songs were not what you normally hear coming out from the mouths of twelve-year-olds. It’s funny because when they practised at home, it didn’t seem that way at all. It was kind of cute and they even tried out their costumes and it was ok. Maybe it was the lighting and the setting or something that made them look so sexy and provocative. But the audience wasn’t impressed, and her parents who were in the crowd didn’t find it funny at all.
+
+
+
+BISI: We were sweating in the heat and that made our clothes cling to our bodies and also become transparent; and since we were also dancing, they revealed more than we intended. That made the songs seem more provocative than they were.
+
+
+
+ME:	The girls were immediately disqualified from the competition.
+
+
+
+PHILLIP:	Many parents complained about exposing their children to that type of music they insisted that the girls be disqualified from the competition, and they were. Even though, they were the best performance of that day. That didn’t bond well with the girls, especially Funke. I remember them crying their hearts out. Funke swore she would never sing again. Her father was also very angry and banned me from having any interaction with his daughter again. I don’t blame him. I know he did that because he felt betrayed. It wasn’t easy for a man from that part of the country to even allow his daughter to sing and dance in public, let alone support her. He did that only because he thought it would be decent and simple. He never thought it would get to that. He removed Funke from our school and enrolled her in another one. Bisi and Cynthia’s parents did the same. The whole blame landed on me.
+
+
+
+ME:	Although the girls were thrown into different schools, it didn’t affect their friendship and they would later get back together. Funke was sent to another secondary school closer to home, and in 1994, immediately after graduating from secondary school, she got admitted into Ahmadu Bello University, Zaria. She was studying mass communication. There she met and fell in love with a second-year art student called Aliyu. He was very interested in Drama and music. One day, after accompanying him to Drama Village, she told Aliyu about her musical abilities and he immediately became interested. He had access to all the art department’s music 
+
+facilities and so he started taking her to the studios. He also introduced her to two of his friends Bayo and Chike also known as Chuks, with whom they later formed a band.
+
+
+
+FUNKE (NTA AM Express Interview 2005):	We formed a band called “African Sunrise”. It was a kind of rock/reggae band, and I was the lead singer and the only female band member. There was Aliyu on the drums, Bayo on the guitar and Chucks on the piano. I also played an instrument from time to time, but I mostly sing.
+
+
+
+CHUKS:	Funke was very good. She wrote all our songs and sang them well. Suddenly we were singing at school events and then in competitions. She knew exactly what to do and how to get us jobs. She had doneitbefore. We became very popular within the university circle.
+
+
+
+ME:	But her father found out. Someone was watching and went and reported her to him. Her father has had enough. So, he took her out of school and forced her to marry his friend Alhaji Jimoh Okunrounmi, a man much older than her. She was barely nineteen at the time.
+
+
+
+BISI: Funke cried as if she would die. She did not want to marry that man. For her, it was a fate worse than death. But they forced her anyway. And after the marriage, the man raped her several times. He was much stronger than her and there was nothing she could do. She was a virgin then, and she must have been so horrified.
+
+
+
+PHILLIP:	He was more than twice her age and had a wife already. He married her as a second wife. Funke’s life was slowly falling to pieces. She was degenerating and losing weight by the day.
+
+
+
+CYNTHIA:	Funke was so sad. Everything she dreamt of her whole life just stood still. Her husband didn’t allow her to further her education or do anything. She was a full housewife and she kept on having problems with the first wife, with whom she had to share a kitchen. He would also beat her; after all, she was only a little girl to him and his property.
+
+
+
+ME:	In 1996, she gave birth to a baby girl whom she named Oluwa-Funmilayo (God has given me Joy). She called her Funmi for short. A year later, she got pregnant again but had a miscarriage. Six months later, her husband divorced her. 
+
+
+
+CYNTHIA:	Actually, Funke was the one who left her husband. She didn’t love him. He was too old for her. He was abusive and she was always having a lot of problems with his first wife. The house became too unbearable for her. She went back home, but her parents wanted to force her to go back to him, again. So, she ran away and came and stayed with us at the hostel. We were in the university then. She then filed for a divorce. She sold her property and rented an apartment in Zaria town. Her father disowned her. But she was no longer a girl, so she was on her own.
+
+
+
+ME:	The divorce didn’t come easy though. Her Ex-husband tried to make the divorce as difficult as he could, and when she succeeded in getting away from him, he took custody of their daughter against her will. Unfortunately, customs supported him, and she didn’t have enough money to fight back.
+
+One day, she got the news that her daughter was dead. She later found out that the man’s first wife gave her a beating, which led to the hospitalization of the girl and subsequent death. Funke was devastated. She was heartbroken and damaged. The only good thing that ever came out of her marriage had been taken away from her and destroyed. Unfortunately, it was a man’s world and so no one blamed the husband for the part he played in the whole thing. Her parents didn’t support her, and she didn’t have the money to fight him in court. Everyone told her to just take heart and bear the loss.
+
+
+
+BISI:	Oh man! Funke was destroyed. No one ever thought she would recover from that shock. I felt her pain. After what happened, her ex-husband divorced his first wife and apologised. But Funke wouldn’t take him back. I mean, come on, after everything he did to her. He killed her daughter, he used to beat her like crazy and she didn’t even like him to begin with. I would have hated her if she went back to him.
+
+
+
+ME:	She tried to get back with Aliyu, but he had already married another woman. She begged him to take her back, but he refused. To him, she was old now and he didn’t want anything to do with her. He kept giving her excuses about how his parents chose a wife for him and that he couldn’t afford to marry both of them. She was hurt.
+
+After mourning her daughter for a while, she decided she wanted to go back to school. The admission proved difficult to get as she did not have anybody to help her. She didn’t want to go back home, since she had not yet forgiven her parents for what they did to her and also because she was having problems trusting them again. 
+
+CYNTHIA: Her mother tried to reach her several times, but she was too angry to listen. She blocked every avenue for her to get to her. She said that she was going to make it on her own without their help and that there was nothing they could do about it. After all, she was no longer a child. She was her own woman.
+
+
+
+ME:	She tried to get a job. That was difficult as well since she did not finish school. She did not have a degree or even a diploma. Eventually, she was able to land a job as a waitress in a hotel restaurant where she pulled double shifts to pay her bills.
+
+Six months later she got bored. She realized that she was not getting anywhere by staying in that place and that her job could barely support her let alone get her anywhere. One day, she came home and found out that her apartment had been burglarized. Some furniture and her savings were stolen. That was very demoralizing for her, but it gave her the push she needed to do what she was afraid of doing. She decided that she was going to pursue what she was good at, a music career. So, she sold what was left of her belongings and moved to Lagos in pursuit of her music career.
+
+
+
+CYNTHIA: She heard about a popular music producer in Lagos called DJ Aladin, who had supposedly launched the careers of many famous Nigerian musicians including Sir Shina Peters. So, she immediately went there to find him.
+
+
+
+ME:	In 1998, Funke sold all her belongings and moved to Lagos to pursue her dreams. She went there on a tip, to find a music producer who was going to help her record her album. She stayed at a cheap motel at Illupeju and went around the town looking for him. She was able to find him eventually with the help of the staff at the motel she was staying in but was rejected by him for her style of music. He claimed that her music was not African enough and that she was copying the European style of pop music. She tried to convince him that her music was good, but he didn’t take her seriously and even demanded sex. She declined and left.
+
+Funke was disappointed. All her hopes and dreams were chartered in her face. After that encounter, she tried many other producers and Directors, but it all ended in the same way with them trying to get sex from her in exchange for a music contract. For some reason, they mistook her love for music for promiscuity and didn’t take her seriously, because she was a woman. It didn’t matter how talented she was or what ideas she had; as far as they were concerned, she was a young single woman living on her own without a male chaperone and was trying to pursue a music career. In Africa then, that was no job for a woman from any respectable home. She didn’t know what to do. She had lost everything, her money, her family, and her dreams. But she didn’t want to go back to Zaria and school. She couldn’t go back home either. So, she 
+
+decided to stay in Lagos. She got a night waitressing job at a restaurant in the ghetto Ajegunle and from the money she earned from that, she bought a sewing machine and started sewing clothes for the residents of her street by day; and then waited tables by night. She also sold some provisions by the side to make ends meet.
+
+
+
+BISI:	She rented a room in a face-me-I-face-you compound in Ajegunle. This was a girl who grew in the lap of luxury but was ready to go through all that just to achieve her dreams. I asked her to come and stay with me and my husband. But she refused. She wanted to make it on her own. I think she was feeling like a failure and didn’t want to face us. She saw what we had achieved with our lives, our degrees, our happy marriages, and everything. She compared it to where she was at that time and didn’t want to be reminded of that every day. That is why she decided to stay far away in Lagos, alone.
+
+
+
+ME:	Funke never gave up on her dream though. She stayed in Ajegunle for almost two years before luck came her way. But staying in Ajegunle proved more difficult than she would have thought. She became a victim of pickpockets, lack of basic amenities and what have you. It was a major adjustment to her life.
+
+
+
+FUNKE (MTV now, interview 2006): That place was terrible. God! There was an erratic power supply, a constant lack of water, no privacy and so on. The whole compound shared only two toilets. Some families had children. We pay people to clean the toilets twice a week, but when about fifty people use only two toilets, it is never clean. It was beyond horrible. My things were also constantly stolen. Whenever I washed my clothes and hung them to dry, I had to keep an eye on them or else they would be stolen from the line. Everything had to be under lock and key. People were also always all up in your business, whether you invite them or not. There was constant friction and fights between the residents of the compound. I was not built for this. I prayed every day for God to give me the strength to bear it and to reward me for my efforts by making my dreams come true.
+
+
+
+ME:	One faithful day In October of 1999, she met a man called Adewale Akande A.K.A Wale who later became a big part of that dream.
+
+
+
+FUNKE (MTV now, interview 2006): I was walking home one early morning, after collecting my pay from the restaurant. I stopped at a kiosk to buy some bread and tea for breakfast. A motorcycle that was parked nearby suddenly sped past me and the back passenger snatched my 
+
+purse and then they sped away. I was angry. My purse was gone, and all my money was in it. I stood there screaming that they should come and take me too. I was screaming-
+
+“Bastards, come and kill me! That is the only thing remaining! You have taken away everything from me!”
+
+I wanted to die. A big scary man walked over to calm me down, but I screamed at him. You know, I wasn’t scared at that moment. I had finally given up hope, so I didn’t care what he was going to do to me. I just wanted to die. But he was very patient. He did his best to calm me down and assured me that he was going to get the guy who did that to me. He introduced himself as Wale. He even offered to buy me stuff, but I declined, so he escorted me back to my place.
+
+That same evening, I was in my room when I heard a knock on the door, I opened it, and Wale was there with a younger man who looked roughened up. The young man was holding my bag.
+
+“Is this the bag?” Wale asked.
+
+“Yes,” I replied, very surprised. He then told the boy to give it back to me. He also told me to check and see if everything was intact. To my greatest surprise, it was. So, he said:
+
+“I told you, I run this town. Don’t worry; you will be fine, I promise.” I thanked him and with that, he grabbed the boy and walked away. I had a feeling that he had a hand in the whole scheme, but I had been just so happy to get my things back.
+
+
+
+ME:	From that day onwards, Wale became her protector in the Ghetto. Nobody dared to mess with her or her property. Because of that, she was able to have some peace of mind to pursue her dream.
+
+
+
+FUNKE (MTV now, interview 2006): I was not dating him, but everybody called me Wale’s girl, and no one wanted to mess with Wale’s girl. I was OK with that. He didn’t date me, but he also would not let anyone else date me because he knew the boys in that neighbourhood and he knew what they were capable of. He didn’t want them to hurt me, so he stopped them all from coming to me. I was ok with that too. I didn’t go there for boys; I just wanted to concentrate on my music.     
+
+
+</div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="poem3" class="poem-page">
+    <h2> Chapter 2: DISCOVERY</h2>
+    <div class="poem-text">
+
+Two years after Funke moved to Ajegunle, there was an advert for the ‘Miss Nigeria beauty Pageant’. The winner was to get One Million Naira and a Honda Accord Car in addition to the numerous other perks that holding the title for a year would bring. Funke thought that that was an opportunity for her to use her beauty to make a name for herself and also, get money for her music without losing her soul and dignity.
+
+
+
+FUNKE (MTV now, interview 2006): I thought that since people kept hitting on me anyway, then I must be beautiful enough to be able to enter that pageant. I also thought that one million Naira was enough money to create a nice album and even market it. Also, the fame that I would gain from winning the pageant will boost sales. I always thought of myself as a winner, and never once had I thought that I would lose. That was how much confidence I had in myself. Well, I still have that confidence and it has helped me to achieve a lot throughout my life.
+
+
+
+ME:     With that positive attitude, Funke took the last Five Thousand Naira, (N5, 000) that she had and applied for a spot in the competition and a month later, she was invited for an audition.
+
+
+
+FUNKE (MTV now, interview 2006): I was so excited when they invited me. I thought that I was already in until I got there and saw over one hundred girls in the queue. About three thousand girls were invited to audition. I was scared. There were some very beautiful girls in that queue. Some could do the walk very well. Some came with some books on current affairs, and they were just quizzing themselves. Wow. I didn’t know that I needed to know current affairs as well. I thought my beauty was enough. I felt so unprepared. I tried to befriend those girls, so that I could get some information from them, but they were so bitchy. No one wanted to give any other person a chance. It was horrible.
+
+
+
+ME:	After three days in the queue, Funke and Nineteen other girls were chosen out of more than three thousand girls. 
+
+FUNKE (MTV now, interview 2006): I was so excited and surprised at the same time. None of those current affairs girls scaled through. It was like, every girl that went in to see the judges came out in tears. So, when it got to my turn I was really scared. But when I got in, they immediately put me at ease. They just asked me a few questions about myself and why I wanted to join the pageant. I told them the truth. They made me sing for them and when I did, they congratulated me and told me that I was going to make it to the competition. They also praised my positive attitude.
+
+
+
+ME:	At camp, Funke quickly established and built a reputation for herself. She made a lot of friends in the house (Some of them, becoming her best friends for life) and then told them about her dream. She told them that she would put them in her album, and they were all excited.
+
+
+
+FUNKE (MTV now interview 2006): I saw all those beautiful girls and I got an idea. I imagined how nice it would be to have them as my backup dancers. I never thought of dancing until then. So, I came up with a few routines and got them to dance with me.
+
+
+
+GRACE (MODEL):	Funke was very nice. She got along with everybody, and we all liked her. When she told us about the album, we were all excited. We all wanted to be in it. So, she stylishly made us practice in batches of five so that she could cut out a few people who were not keeping up with the routines.
+
+
+
+RUKAYYA (MODEL):	We practised the routines quietly at night after lights out. We knew that if we were caught, we would be disqualified from the competition, but we didn’t care. Funke had already bribed the guards to alert us when someone was coming.
+
+
+
+ME:	Funke also met and fell in love with one of the workers in the camp by the name of Anas. He was an assistant to the director of the show and just like her, was a runaway. He was a very rich man’s son from Kano state. He had problems with his parents and had left home for Lagos to make it on his own. There he met someone from Silverbird PLC who offered him a job at the pageant. He was quickly drawn to her being that only two of them were truly from the north.
+
+
+
+GRACE:          Anas was very handsome, and it was love at first sight. You could see that they cared about each other. We also liked him because he was cool. He would sneak in some 
+
+chocolates and biscuits for us. Those things were strictly prohibited, and we could not get access to them. So, he was like a superstar to us, and we all approved of the relationship.
+
+
+
+ME:	On the day of the talent show, Funke sang for the judges and wowed them. Unknown to her, there was a representative of Afrika Records, the biggest Music recording company in West Africa, among them and he was impressed by her singing. She won the talent show but did not win the beauty pageant in the end. She was eliminated before the grand finale and was disappointed. But after the event, the representative from Afrika Records offered her a Five million Naira, a two-year contract with Afrika Records. She was over the moon.
+
+
+
+FUNKE (MTV now, interview 2006): My God. I was so excited. I didn’t win the competition, but I got something even better, a record deal with one of the most prestigious record companies in Africa. I couldn’t have asked for any better.
+
+
+
+ME:	Even though Funke didn’t win, she was allowed to make an impromptu debut of the first single of her album on stage, with the whole Country and even some neighbouring countries watching. The song was called: ‘Second Chance’. It signalled the official launching of her music career to the world.
+
+
+
+SECOND CHANCE
+
+
+
+VERSE 1
+
+We all live with regrets, something we wish we could take back.
+
+A little do-over, to make things ok.
+
+But life is not always so kind,
+
+As to let us go back and make things right.
+
+
+
+VERSE 2
+
+We fight, we quarrel, and we get angry.
+
+We hate each other for some time.
+
+We then try to compromise, 
+
+But in the end, we have to accept that we weren’t right.
+
+
+
+CHORUS
+
+
+
+We all want a second chance,
+
+To say we are sorry, for everything we did wrong.
+
+If we get that second chance,
+
+We should grab hold of it with both hands and never let go.
+
+
+
+VERSE 3
+
+We are only human, and we make mistakes.
+
+None of us are perfect so we forgive, and we forget.
+
+Holding on to the past will do more harm than good.
+
+So, letting go will definitely bring peace to you.
+
+
+
+VERSE 4
+
+Sometimes giving someone a second chance is giving them a shot at breaking your heart.
+
+But everyone deserves a do-over at least once in their lifetime.
+
+They may not be grateful, and they may fail you again.
+
+But in your heart of hearts, you will know that you have at least tried.
+
+
+
+CHORUS (2X)
+
+
+
+BRIDGE
+
+Second chances, second chances,
+
+Forgive and forget, forgive, and forget.
+
+Second chances, second chances, 
+
+Forgive and forget, forgive, and forget.
+
+
+
+CHORUS (INFINITY)
+
+
+
+Despite its sad lyrics, the song was an upbeat pop/R&B song with a rising tempo as it progressed. She also had the models as backup dancers, which added flair and excitement to the stage performance. She got rave reviews. The song quickly lodged itself among the top ten Nigerian singles and within a few weeks reached No.1. It later went to Africa’s top 100. The video for the song was late shot on Bar-beach, Lagos and launched on NTA network and later Silverbird; and then other stations followed suit. It also became the first Nigerian music video to be shown on Channel O. Of course, she kept her word and included about six of the model girls in it.
+
+
+
+RUKAYYA:	People loved the video. Here you have seven very beautiful girls dancing in skimpy outfits on a beach. You don’t see that very often here in Nigeria and so, it became very popular.
+
+
+
+ME:	The hip and catchy tunes didn’t hurt either. The youth was immediately hooked up to it. It played on every Television and radio station around the country and beyond. She was an instant star.
+
+Two months later, she released her second single “Jaded.”
+
+
+
+JADED
+
+
+
+CHORUS
+
+You’ve got me so jaded.
+
+Boy am so fed up.
+
+Am about to give up.
+
+Tired of all these pains.
+
+
+
+Boy you’ve got me so jaded. 
+
+You’ve got me feeling so numb.
+
+I can do this anymore.
+
+So tired of these empty promises.
+
+
+
+Because you’ve me so jaded.
+
+
+
+VERSE 1
+
+I’ve used up all my tears.
+
+Now I have nothing to give.
+
+You came into my life,
+
+And seemed like a king.
+
+I fell for you, hook line and sink.
+
+But a string of empty promises.
+
+Am so tired of your insecurities.
+
+
+
+CHORUS
+
+
+
+VERSE 2
+
+We started out strong,
+
+Full of love, castles in the air.
+
+But every time you make me smile,
+
+A tear is not very far.
+
+I am so tired of settling,
+
+We can’t work if you don’t trust me.
+
+
+
+CHORUS 
+
+HOOK
+
+I am not your prisoner, or a shiny little trophy.
+
+If my love is not enough, then I better be on my way.
+
+
+
+VERSE 3
+
+Better to be alone than in pain.
+
+I am fine on my own anyway.
+
+Love should bring happiness,
+
+And not hurt and regret.
+
+I am so tired of everything.
+
+Looking for a new beginning.
+
+
+
+CHORUS (INFINITY)
+
+
+
+The song was a blend of R&B and Soul. It hinted at an abusive relationship. It was about a young girl who was naïve and was being taken advantage of by the man she loved. The video featured a famous Nigerian Male model by the name of Mike, who played the part of the abusive boyfriend.
+
+It was well received by fans and immediately shot to top ten on the Africa Billboard 100 and stayed there for 5 weeks and later remained in the top 100. She had a knack for quick and witty lyrics, which tended to appeal to the youth. Therefore, the song quickly became a sort of national anthem. Everywhere you go, you hear kids singing it. Producers like things like that.
+
+Not one to rest on her ores, she quickly followed suit with her third R&B single and video, ‘Too Much Too Soon’ together with the official launching of her Album ironically named ‘Against all Odds’. The song shot to no 1 on the billboards 100 Nigeria and the album became Nigeria’s and later Africa’s bestseller for the year 2001.
+
+
+
+GRACE:	It was the most successful female album ever in Nigeria. It was something new that had never been seen before and she became an instant star. Everywhere we went, she got recognized and people mobbed her. It became almost scary. 
+
+ME:	The unexpected success of her album prompted Afrika Records to extend their contract for another two years and also increase the contract amount to twenty Million Naira. They also sponsored a nationwide tour for her which was very successful bringing in over Eighty million Naira in profit. That is not even including profit from sales of albums. The album went on to win best Nigerian Album of the Year and Best R & R&B Album. Her songs also won a variety of awards. She was named Artist of the Year at the Nigerian Music Awards (NMA).
+
+Before long, commercials came a-calling, and she was offered a Five Million Naira endorsement deal with ‘Star beauty soap’. She was over the moon.
+
+Funke moved out of her one-room apartment in Ajegunle to a three-bedroom flat in a much better part of the same Ajegunle. She didn’t want to move out of the area because she felt protected enough to stay there and also because she had made such a connection with the people over there. She just tried to make herself as comfortable as possible. She tastefully furnished the house and hired a gang of security for protection. She wasn’t an idiot. She knew the risks of staying there and being rich and she wasn’t about to let herself become an easy target. She bought a generator to complement the erratic power supply and dug a borehole for water. She also built a mini studio in the house. She joined a gym and got an assistant. Anas also proposed to her, but they agreed that the marriage would take place after the release of her second album, which was to be in about a year. Life couldn’t be better.
+
+
+
+FUNKE (MTV now, interview 2006): He took me out for ice cream and then got me my Favorite flavour, coconut. While eating the ice cream, I bit into something hard; I spat it out into my palm and voila; diamond ring! It was not expensive, I am not even sure it’s a real diamond, but it was so romantic, and I loved it. I said yes. But we both agreed that the marriage would take place after the release of my second album. 
+
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+
+
+
+
+
+<section id="poem4" class="poem-page">
+    <h2> Chapter 3: SUCCESS</h2>
+    <div class="poem-text">
+
+
+Chapter 3: SUCCESS 
+               ME:	She immediately started working on her second album and within a short time released her first single, a slow R&B number called - “Emotional.”
+
+
+
+EMOTIONAL
+
+
+
+VERSE 1
+
+I tried to erase you from my mind, act like you don’t exist.
+
+But you have a hold on me, and my mind cannot resist.
+
+
+
+Thinking about you, and daydreaming about back then,
+
+When you and I were the best of friends.
+
+
+
+VERSE 2
+
+Then I went and ruined it all, by telling you how I felt.
+
+Never thought you could be offended by your best friend.
+
+
+
+One cannot fight the emotional climate of the heart,
+
+And your rejection is tearing me apart.
+
+
+
+CHORUS
+
+Oh baby, I am so emotional right now.
+
+My heart is heavy and my soul is worn.
+
+I carry the burden of unrequited love.
+
+My trust and my hopes are all gone. 
+
+
+
+VERSE 3
+
+There is nothing in the world more hurtful.
+
+Than to want someone and to know that they don’t want you.
+
+
+
+It burns you from the inside and eats you whole.
+
+It imprisons your heart and never let you move on.
+
+
+
+VERSE 4
+
+I wonder if I will ever get over you.
+
+If this pain will ever go away and I could feel brand new.
+
+
+
+But I need to let you go and move on with my life.
+
+Maybe someday, I will love someone else.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+They say everyone has a soul mate.
+
+Someone, somewhere in the world that completes them.
+
+I know I have found mine, but he rejected me.
+
+But no matter, what will be will be.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	Just like her previous singles, the song quickly found its way to the top ten Nigerian songs. A video followed suit and was received well. While working on her second single, however, she fell ill and was admitted to the hospital. What started as a simple fever quickly 
+
+developed into something more serious. So serious that she had to be moved to the Teaching Hospital, Lagos. There she was diagnosed and declared positive for AIDS. All her hopes and dreams came crashing down in front of her.
+
+At that time, there was a lot of stigmas against people living with HIV/AIDS. People didn’t understand what it meant then, and to everybody, being declared HIV positive, not even AIDS was like being given a death sentence. Except for Wale and her Doctor and a few friends, everyone else deserted her. Tabloids somehow found out and carried the news. People said she deserved it because she was a harlot and that it was inevitable. The sudden fame that she experienced was working against her. Everyone knew and everyone was talking about it and not in a good way.
+
+Afrika Records dropped her from their label and revoked her contract. The Star beauty soap also yanked away their endorsement deal from below her, as she was deemed ‘morally unfit’ to represent them. Her album sales dropped drastically. The only people who stuck with her throughout her ordeal were Wale, her Doctor, Cynthia, Bisi, Grace and Rukayya. Her parents reached out to her, but she wouldn’t answer. She was too ashamed, and she didn’t want to go back home a failure. Not after everything she had been through. So, she ignored all their messages.
+
+
+
+BISI:	She took a lot of risks with her videos. At first, they got her the attention and album sales that she wanted. But when she got sick, those same videos were used as evidence to describe her as a whore and as someone without a good home upbringing.
+
+
+
+ME:	The first time she saw the doctor who gave her the news, she couldn’t believe that he was even a doctor. He looked so young, probably even younger than her. But she was sure that he must be qualified otherwise the hospital would not allow him to work there. His name was Ayodele (Ayo) David. He was a graduate of Obafemi Awolowo University, Ile-Ife, Ibadan; and had been a doctor with the Lagos State Teaching Hospital for only two years at that time. When he declared her AIDS positive, she hated him immediately, but then she noticed how disturbed about it, he was, so she changed her mind and she felt sorry for him instead. She later found out that he was a very big fan of hers and that he hated to be the one to give her the bad news. He assured her that he would do everything in his power to make it as easy as possible for her. She then begged him to let her go home and spend the rest of her days there, he agreed on the condition that he would be visiting her at home to make sure that she took her medication and proper nutrition. He kept his word.
+
+From the day she was declared AIDS-positive, she never saw Anas again. He stopped going to see her at the hospital. All her calls to him went unanswered and at some point, he must have changed his number because the calls suddenly stopped going through. Two months after she 
+
+went back to her apartment, she found out that Anas was going to marry Nafisat, one of the models from the pageant and her backup dancer from her first album. She was destroyed.
+
+
+
+FUNKE (MTV now, interview 2006): When I found out about them, I just wanted to die. It was the last straw. I just couldn’t take it anymore. I thought that I had nothing else left to live for. Nobody cared. The only thing I was good at, my music, was taken away from me. Everything I had worked hard for was lost and the people that I loved so much all deserted me at the time I needed them the most. What else was there to keep hanging on for? At most, I would live another year in pain and lose so much weight that I would look like a skeleton. I have seen pictures of AIDS patients, and I didn’t want to be like any of them. So, I decided to end my life immediately and go with a little dignity. I knew that suicide was wrong, but at that time I wasn’t thinking straight.
+
+So, I went to the kitchen and took out a knife from its stand. I was too weak to keep standing so I sat down and was contemplating how I was going to do it. Was I going to stab myself in the stomach, slit my throat or my wrist? I couldn’t make up my mind. I was also wondering if it would hurt a lot or if I would just die immediately. Also, will I go to hell? I closed my eyes and silently prayed to God to help me. Just then I heard a familiar voice telling me “Please don’t do it.” I looked up and my doctor was standing by the door.
+
+
+
+DR AYO:	I went to her house to check up on her as I always did to make sure that she was taking her medication and also eating food. She hasn’t been eating. I went straight to the bedroom as usual, but she wasn’t there. I was surprised because she hardly left the bedroom and when she did, it was only to go to the bathroom or the living room. She wasn’t at either. So, I concluded that she went to the backyard for some fresh air. To go to the backyard, you have to pass through the kitchen. It was on my way there that I found her sitting on the kitchen floor with her back against the counter and a big knife in her hand. I was so scared I started to beg her not to kill herself. I think I even cried a little.
+
+“Why not?” She asked me. “What have I got to live for?”
+
+I tried my best to talk her out of it and after a few minutes of hits and misses; she finally decided that she would not do it on the condition that I take her out to somewhere fun and lively, that the house was driving her crazy. I agreed and took her to Bar beach. She sat on a bench and watched some children play. There were families around having fun and luckily, no one recognized her, and no one was repulsed by her. A little child came running towards her being chased by an older one. She fell on her lap, laughing and then got up and ran away. For the first time in weeks, I saw Funke smile. She looked at me and said, “I am hungry.” I was surprised. So, I took her to Mr Bigg Fast Foods where she ate two plates of rice and chicken and washed it down with two bottles of Fanta. I opened my mouth to say something, but nothing came out. I was too surprised. I then took her home where she laid down to sleep. 
+
+The next day when I went to visit her, she was in her studio writing songs. She looked and sounded much better than she did the previous day. I could not believe it.
+
+
+
+FUNKE (MTV now, interview 2006): Watching those kids play boosted my morale. It reminded me that I was still alive, and all hope was not lost yet. I decided that I wanted to make the most of what was left of my life. I also remembered the story of Tupac Shakur, who died way too young. But could not be forgotten because of the legacy he left behind. Many of his songs were released after he died, and I think that more are still being released even today. That in a way immortalized him. I wanted that. I decided to write as many songs as I could so that long after I am dead, people will still be talking about me. I left everything to God. I didn’t want to sit down and wallow away in self-pity. No, that’s not me. I had been through tough times before and had always risen above adversity and I believed I would still do the same. Even if I died in the end, I would have died happy.
+
+So, I went into the studio and started writing songs. I cleared my mind and forgot all about my worries. Just concentrated on what I wanted to do. I was already working on an album before I became sick, so I continued from where I stopped. I added a few songs about love and compassion for those living with HIV and AIDS. I wanted to put a face to the disease. I wanted people to understand that those who suffer from the disease also have feelings and that when shown love and compassion by people around them, they can live a long and happy life.
+
+
+
+ME:	She wrote over thirty songs, including those about HIV and AIDS like ‘Hold my hand’-
+
+
+
+HOLD MY HAND
+
+
+
+VERSE 1
+
+Everyone gets sick, sooner or later.
+
+When we are sick, we need more than medicine.
+
+We need someone to hold our hand,
+
+A friendly face, to tell us we’ll get better.
+
+
+
+VERSE 2
+
+Sometimes it is simple, and sometimes it is not. 
+
+But no matter what, we don’t want to go through it alone.
+
+It takes more than just flowers, to show you care.
+
+A simple visit, makes it easier to bear.
+
+
+
+CHORUS
+
+A friend in need, is a friend indeed.
+
+In our darkest hour, we want a friend.
+
+Someone to say it’s ok, I am here.
+
+To hold our hands, and to care.
+
+
+
+CHORUS
+
+
+
+VERSE 3
+
+We all make mistakes; we are only human.
+
+Never judge someone by their past.
+
+Everyone is susceptible to some misfortune.
+
+Bad things do happen to good people too.
+
+
+
+VERSE 4
+
+So, at my worst moment don’t leave me alone.
+
+Do not let me grieve on my own.
+
+Show a little kindness and compassion.
+
+It could mean more than you will ever know.
+
+
+
+CHORUS
+
+
+
+BRIDGE 
+
+Show a little kindness show a little compassion.
+
+Never let go, never leave me alone.
+
+Show a little kindness show a little compassion.
+
+Never let go, never leave me alone.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	It was a soulful R&B song that touched the heart. It was a direct reflection of her condition, and she poured out her heart into the song. You could feel her pain and couldn’t help but to stop and listen. In the video that she would later shoot for the song, she featured many real HIV and AIDS victims who were more than willing to appear in it to give the disease a face. She also showed that people can care for the patients without getting infected in the process. It was a song that would later become her signature song and one that organizations such as the World health organization (WHO) and the United Nations Organization for Education, Science and Culture(UNESCO)would use in their campaign against HIV/AIDS in Africa.
+
+The second song that she wrote was called ‘Alive’.
+
+
+
+ALIVE
+
+
+
+VERSE 1
+
+It’s a brand-new day, and I am alive.
+
+It is a gift, that I am thank full for.
+
+I can breathe, and I feel so fine.
+
+I have a smile on my face, and in my vein a pulse.
+
+
+
+VERSE 2
+
+I have loved, and I have lost.
+
+I have smiled, and I have made mistakes.
+
+I have had incredible highs and lows. 
+
+I am only human; I am not perfect.
+
+
+
+CHORUS
+
+I am alive, I am alive.
+
+It’s a brand-new day and I am awake.
+
+I am alive, I am alive.
+
+I am going to live my life to the fullest.
+
+I am alive, I am alive.
+
+Nothing can take my happiness away.
+
+I am alive, I am alive.
+
+
+
+
+
+VERSE 3
+
+Throughout my ups and downs.
+
+All of the good times, and the bad times.
+
+My feet have always been firmly on the ground.
+
+And now, I am lucky to be alive.
+
+
+
+VERSE 4
+
+I am awake, and I have a purpose.
+
+To be happy and make everyday count.
+
+I am grateful for my blessings, and never take them for granted.
+
+I never thought I would be where I am now.
+
+
+
+CHORUS
+
+
+
+VERSE 5 
+
+I am feeling great, I am feeling fantastic.
+
+I will never be broken down by anything.
+
+Something wonderful is about to happen.
+
+I am going to fly above the world and be free.
+
+
+
+VERSE 6
+
+Finally, I have cleaned out my closet.
+
+Letting go of everything that was making me sad.
+
+I am focusing on only those things.
+
+That makes me feel happy to be alive.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	It was an upbeat and very happy pop song that made you want to dance. Despite her condition, she still found it in her to write a catchy and happy song. She claimed that she attempted to uplift her spirit and be happy again. No one else could do that for her, she had to do it herself. The way she saw it was that she had two choices, either to wallow away in misery until she died or decide to be happy and feel good about herself. She chose the latter and it showed.
+
+
+
+Dr Ayo helped out in any way that he could. He was surprised that she was no longer upset but happy and writing, and in the process, she kept getting better and better. She even started to gain weight. So, he wanted to encourage that positive attitude. In his experience, that kind of approach does wonders to patients.
+
+
+
+DR AYO:	I was concerned. I mean, I was happy that she was getting better. But it wasn’t normal. When a person is already at the stage of AIDS, they don’t get better, and they certainly do not start to gain weight. I was concerned that we gave her a wrong diagnosis, which would mean, that we destroyed her life. I decided to run more tests. I took some of her blood, but without telling her why. She didn’t even bother to ask any questions. She didn’t want anything to spoil her mood. Just as I suspected, the blood work came back negative for HIV/AIDS. I ran two more tests and got the same results before going to confess to her. 
+
+
+
+FUNKE (MTV now, interview 2006): I didn’t want to say anything because I didn’t care anymore. I had already accepted my faith and was at peace with myself. But he kept coming back to take more blood, so I asked him to tell me what was going on. That was when he confessed to me. I was beyond shocked. There he was, on his knees begging me for forgiveness. He accepted all blame and even promised me that he would do anything in his power to help clear my name. He was a young doctor and had been practising for less than two years. I wasn’t surprised that he could make a mistake like that. So, I forgave him but told him to be more careful next time because some other person may not let him off the hook so easily.
+
+I was glad though that it happened. That way: I got to know who my real friends were and also, how strong I was. That gave me the courage to get to where I am today. I knew there and then that nothing, no matter how big or horrible was capable of knocking me down. I also got to understand discriminati
+on and what those living with HIV/AIDS had to put up with. I then promised myself that when I made enough money, I was going to set up a foundation to help the victims of HIV/AIDS and to also fight against discrimination.
+
+    </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem5" class="poem-page">
+    <h2> Chapter 4: BREAKTHROUGH</h2>
+    <div class="poem-text">
+
+      ME:	Funke immediately set about putting together her album. She already had about thirty songs that she had written. But she did not have a producer or a director, a record company or even money. She decided to register her own company – “Rose Records” but that was it. Then, Dr Ayo offered to help in a way that would shock her.
+
+
+
+DR AYO:	Because of the guilt that I felt, I decided that the best thing I could do was to help her bring back her music career to life. She needed a manager so; I resigned from my job as a medical doctor and became her manager. I never really liked being a doctor anyway. It was my parents’ dream and I have fulfilled it for them. I was a very social person, and I knew a thing or two about music. I was also privileged to know a few people who own and run nightclubs and so, I decided to use that knowledge to help Funke with her music. It was a “sink or swim” situation for both of us.
+
+
+
+ME:	Wale was in charge of publicity and marketing. He knew Lagos very well, especially, the slums and he had the power to influence a lot of people. Therefore, he was the perfect person for that job. For money, she sold everything that she didn’t need, e.g. her generator, car, and so on. She raised enough to sell her music. Luckily, she already had a studio at home, so she recorded her music there. Wale and Dr Ayo organized shows for her at various clubs. Dr Ayo got her into the exclusive ones in the better part of town. He also helped shoot and direct the music videos. When the songs were out, he used his contacts to get them to be aired on various stations. He also got her interviews on TV and radio stations, and magazines to create awareness and boost sales. He knew club managers and even owners, so he got her to perform at various nightclubs at no cost. Wale also got cheap extras to dance in the video etc.
+
+Within a short time, she released her first video “Hold My Hand”. The song was a hit. There were a lot of extras and some of them were HIV/AIDS victims. She wanted to show the world what many people were going through and how the victims of HIV/AIDS suffer more from stigmatization than from the disease itself. And that with the right treatment and attitude, a person can live a long and healthy life even after being declared HIV positive. She succeeded. The song quickly gained popularity, first in the slums then later nationwide. The lyrics were catchy yet soulful, and everyone could associate with it. It later went on to win several awards, including best new song at the Nigerian Music Awards (NMA), a humanitarian award and so on. 
+
+
+
+DR AYO:	It was better than we expected. That was the first time someone came out and talked openly about the disease. It used to be such a taboo, something to be ashamed of. No one wanted to associate with or even acknowledge anyone living with the disease. She gave everyone a picture of what was going on with people who suffered from this disease. And I believe that everyone could relate to the song even if you don’t have it you may have other problems that may be weighing you down. And the fact that she went through it and came out alive, also helped. It was like getting the news directly from the horse’s mouth.
+
+
+
+The song also benefited from the huge publicity that she got during her health scare. It was negative publicity then, yes. But it got her worldwide attention and kept people curious. Her miraculous recovery also added to the fuel so by the time she released her new album, she still had everyone’s attention. Most people bought the album out of curiosity, and that generated huge profits for her. One of the best assets of an entertainer is the ability to make negative publicity work in their favour. Funke did just that. I am so proud of her.
+
+
+
+ME:	Within a year, she released every single song on that album. There were fifteen songs including six videos. The album, which she named “Phoenix” sold like wildfire. Partly because of the second single “Hold My Hand.” There were other equally compelling songs on the album but that one got to people the most. She made over twenty million Naira in profit. But instead of relaxing and spending her money, she immediately set off on a nationwide tour including the nearest neighbouring countries like Niger, Ghana, Benin Republic and Cameroon.
+
+
+
+DR AYO:	From the tour, she made over Two Hundred Million Naira. It was amazing and so unexpected. We couldn’t believe it. Even when she was with Afrika Records, she did not make that kind of money. Her sickness or rather the unfortunate incident helped in giving her street-cred which helped in getting her more fans. It was wonderful. I am sure that Afrika Records and Star Beauty Soap regretted their decisions.
+
+
+
+ME:	And just as she promised, she decided to use part of the money to set up a foundation. She enlisted the help of foreign bodies such as WHO and UNESCO to set up the “Second Chance” foundation whose main focus is to fight against discrimination of people living with HIV/AIDS. She used her popularity to promote the foundation and to get donations. She would organize fundraisers and so on and perform at the event. She would even enlist the help of other artists, who would also use their popularity and talents to attract more audience hence more donations. 
+
+Funke also moved out of Ajegunle to Victoria Island, where she bought a four-bedroom duplex and hired an armed security team, but this was more out of necessity for her safety than anything else. She invested in shares, real estate and gold. Finally, following the overwhelming success of her album, she started working on the next one and within a month, she released her first video, a fiery up-tempo pop song titled - “Still breathing.”
+
+
+
+STILL BREATHING
+
+
+
+VERSE 1
+
+I wear my battle scars proudly,
+
+With a smile, I mask the pain inside.
+
+The storm had finally passed,
+
+I am worn, but I have survived.
+
+
+
+VERSE 2
+
+I had lost friends along the way,
+
+Died a thousand times, but still alive.
+
+Even though I still cry once in a while,
+
+I walk with my head held high.
+
+
+
+CHORUS
+
+You walked away and left me gasping for air,
+
+Ignored my cries for help,
+
+Thought I would be dead by the end,
+
+But am still breathing.
+
+
+
+There is no more oxygen,
+
+The air had been sucked out of my lungs,
+
+But no matter how bad things get, 
+
+I am still breathing.
+
+
+
+VERSE 3
+
+Inside me, I am broken and bruised,
+
+But outside, I remain strong and brave.
+
+No matter what life threw at me,
+
+I refuse to be a victim, I am a survivor.
+
+
+
+CHORUS
+
+
+
+VERSE 4
+
+I thought I could be happy,
+
+Thought you were the one to complete me.
+
+My back still aches and bleeds,
+
+From the knife you left behind.
+
+
+
+CHORUS (INFINITY)
+
+
+
+
+
+ME:	It went straight to number one on both Nigerian and African charts and became a much talked about song because of its lyrics. Many people believed that it was directed at Afrika Records even though Funke denied it, claiming that it was only a song.
+
+
+
+BISI: When you listen to the song, you get that “I told you so” feeling from it. You know it was directed at them, especially the lines:
+
+
+
+“You walked away and left me gasping for air,
+
+
+Ignored my cries for help, 
+
+Thought I would be dead by the end,
+
+But am still breathing.”
+
+
+
+I mean, come on, they dropped her thinking she was over, only for her to rise again like a phoenix and sell millions of records. It’s a no-brainer. Although, it could also be directed at Anas. Who knows?
+
+
+
+ME:	Whomever the song was directed at, it worked, because that song not only won awards and topped the charts all over Africa, but also went on to earn her an MTV award for best international artist of the year, thus getting her worldwide recognition. She became the first African female artist ever to get that kind of award. It was a dream come true. The adverts and endorsements came rolling back in.    
+
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+
+
+<section id="poem6" class="poem-page">
+    <h2>Chapter 5: STARDOM</h2>
+    <div class="poem-text">
+
+      ME:	On the 27th of November 2003, her manager Dr. Ayo decided to throw her a lavish birthday party to celebrate her 25th birthday. The party was held at THE OWL night club, Victoria Island, Lagos, which was run by Olajide Abayomi who was known in the social cycles as Sway. He was Dr. Ayo’s course mate in the University, who dropped out of medical school to pursue a business career, and he seemed to have done well for himself. He introduced his sister Ronke to Dr. Ayo for the first time at the party and they immediately took to liking each other. She would later become his wife and the mother of his two children.
+
+Love must have been in the air that night, because, among the guests was Sway’s friend Kabelo Masophsa A.K.A Kabelo whom he introduced to Funke. Kabelo was a multiple award-winning South African musician and music producer. When Sway introduced them, they liked each other immediately.
+
+
+
+FUNKE (MTV now, interview 2006): We talked all night long. He was amazing. I mean he was the type of guy that kept you talking and got you to tell him everything about yourself without bombarding you with questions. Not many guys can do that. Most guys will just immediately start interrogating you for no reason under the guise of wanting to know everything about you. Kabelo on the other hand, knew how to strike a conversation that would not only be interesting to you but would also make you reveal a lot about yourself. I believe I told him everything about me and more and I still can’t remember him asking me any questions (Laughs), and while we were dating, he used the info he got from me to tease me from time to time. He was also a big fan of mine.
+
+
+
+KABELO:	When I met Funke, I liked her immediately. I mean, that was a girl that was talented, very beautiful, rich and yet so down to earth. She was so nice and not boring at all, and she had the most amazing laugh. I just couldn’t get enough of her. There and then I knew that that was the woman I wanted to spend the rest of my life with.
+
+
+
+
+
+ME:	Kabelo was a very good producer with a credible track record. So, he told Funke that he wanted to produce her next album under his record label ‘Fly Records’, and she agreed, even though she had already recorded some of the songs on the album under her record label. She decided to go with his, anyway. They went back together to South Africa and worked on 
+
+her third album ‘BLOSSOM’ together producing some of her greatest hits like “Jewels in the Sky”, “Fire Me Up”, “The Perfect Storm”, “My Darling” and “The Sweetest Lies”. In addition to the first song, she had already released “Still Breathing” under “Rose Records”. Each song was a certified hit.
+
+
+
+DR AYO:	Kabelo and Funke together were Beautiful. They were a great pair. Every song that they had produced became a hit. He was already good at what he did and had worked with some of South Africa’s greatest musicians of the early 2000s like Brenda Farsi and the jazz group Mahube, but working with Funke made him untouchable.
+
+
+
+ME:	Amid all that success, their love blossomed. Kabelo fell head over heels for Funke. They quickly became the talk of everyone and were attracting a lot of media attention. People quickly nicknamed them F&K. Their relationship even started to affect politics as people were beginning to say that it was a good PR move for both their countries. Every newspaper, every magazine even the TV, carried news about them. They became a huge hit.
+
+
+
+DR AYO:	They talked about Funke and Kabelo on the National news. That was how famous they were. Every move they made, everything they did was in the papers. People and paparazzi stalked them. They didn’t have an ounce of privacy. Sometimes, the media even carried false and damaging news about them. It was crazy.
+
+
+
+ME:	One of the songs on their hit album ‘Blossom’ was called ‘My Darling’.
+
+
+
+MY DARLING
+
+
+
+VERSE 1
+
+Ohh my darling, my love,
+
+I had been blessed, to have met someone like you in my lifetime.
+
+I am so in love with you, I cannot lie.
+
+You are the light of my life.
+
+Because of you, I wake up every morning with a smile. 
+
+
+
+
+
+VERSE 2
+
+Ohh my darling, my love.
+
+There are no words to describe.
+
+The feeling I get, when you hold me in your arms.
+
+When I lay my head gently on your chest.
+
+Your heartbeat is music to my ears.
+
+
+
+CHORUS
+
+Ohh my darling, I love you.
+
+Ohh my darling, I need you.
+
+You came into my life and made it bright.
+
+I was all but dead and you brought me back to life.
+
+Ohh my darling, I want you.
+
+Ohh my darling, I adore you.
+
+
+
+VERSE 3
+
+Ohh my darling, my love.
+
+I have waited for so long in silence.
+
+You are the reward for my patience.
+
+You are my beginning and my end.
+
+You make me happier, day by day.
+
+
+
+VERSE 4
+
+Ohh my darling, my love,
+
+You are the epitome of beauty. 
+
+All of the stars in heaven,
+
+Cannot compete with your eyes,
+
+Or the sparkles of your smile.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+I will always love and cherish you.
+
+I will never leave you.
+
+You make life worth living.
+
+Your love keeps on giving.
+
+
+
+VERSE 5
+
+Ohh my darling, my love,
+
+You own the key to my heart,
+
+And my body and my soul,
+
+And when I finally breathe my last,
+
+I would like to be beside you.
+
+
+
+CHORUS (INFINITY)
+
+
+
+
+
+ME:	It was a slow romantic R&B number, written by Funke and produced and directed by Kabelo who also featured as the male model/love interest in the video. Even though it hinted of their love affair, it was the song – “The Perfect Storm” that truly represented their relationship. 
+
+THE PERFECT STORM
+
+
+
+VERSE 1
+
+Our passions collided as we become one,
+
+Blissfully in a whirlwind romance.
+
+Can you look into the eye of the storm?
+
+
+
+VERSE 2
+
+Like a desert storm, we move in high acceleration.
+
+We ripped across the land so ferocious,
+
+Blowing always in the same directions.
+
+
+
+CHORUS
+
+You and I, we are the perfect storm.
+
+We rain down our love on the world.
+
+You are the lightning, and I am the gong.
+
+Together we make the perfect storm.
+
+
+
+VERSE 3
+
+Our love is so powerful it may last forever,
+
+A sudden surge of emotions, so intense and passionate,
+
+It threatens to destroy everything in its path.
+
+
+
+VERSE 4
+
+We ruffle the seas and chase the sails,
+
+Of windy afternoons and cloudy nights,
+
+We are tenacious we reach great heights. 
+
+
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+There is beauty in the storm if you look close enough.
+
+We don’t let it break us; we ride it out.
+
+We are the storm; we are the storm.
+
+We are, we are… we are the stormmm.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	It was a pop song with Arabian flute playing in the background. The video was shot in the Sahara Desert. It was wild with winds and sandstorms and there were scenes where Funke was riding a camel wearing a belly dancer’s costume. She featured Kabelo again as her love interest, who would come and rescue her from the storm and together they rode away on a Black horse.
+
+
+
+DR AYO:	You could tell from the lyrics that she sang from her heart. I mean, you could feel the love emanating from her voice, and the way she looked at him in the video, wow! It was undeniable. Anyone who was ever in love would relate to the song.
+
+ME:	The song became a sort of national anthem everywhere in Africa. It went straight to No. 1 on the African charts and stayed there for thirty-two weeks and even longer in the Nigerian top 10.
+
+But to everyone’s disappointment, the relationship didn’t last long. They broke it up after a year and no one knew why. Some said that Funke couldn’t handle the Media attention, and others said someone was cheating on the other. But the couple kept mum. When asked, they both answered that it wasn’t meant to be.
+
+The album “Blossom” that they produced, however, was a huge hit. It became the best African album of 2004 at the African Music Awards (A.M.A) and three of its singles won American awards and a Grammy nomination. That got her the attention of the world-renowned U.S-based 
+
+music producer D.J Matt, offered her aonemillion dollar, one-year contract with his record label “Boss Records” and she accepted immediately, moving to the United States of America.    
+
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+ 
+<section id="poem7" class="poem-page">
+    <h2>Chapter 6: BRIGHT LIGHTS</h2>
+    <div class="poem-text">
+
+      ME:	Funke was offered a lucrative music contract with a famous American Producer by the name of DJ Matt. She moved to America in January of 2005. On getting there, she found out that she would have to join a band and work together with them as a team. She was disappointed. She wanted to continue with her solo career and thought that she was doing well on her own, but then again, she decided that this was a very good career opportunity, and she didn’t want to miss it. She just saw it as a stepping stone to her success.
+
+Her patience paid off when she found out that the band that she was going to be a part of was a Rock group of three guys (Nick, Henry and Adam A.K.A Strike). They called themselves The Silver Rose. She was going to be the lead vocalist, just like she did in her university days. However, they all could sing, but she knew she was still going to stand out anyway, as she was the only female in the group, and being very beautiful didn’t hurt either.
+
+
+
+DJ Matt:	The band was a Heavy Metal Rock band. They were good, but the problem was that there were many other bands with the same style trying to make it in the music industry. So, for them to succeed, they had to have an edge, you know, something different that would make them stand out. I thought that adding Funke to the band, with her Afro-Pop/Rock style will do the trick, and I was right. Their style was individually different but went beautifully together. And they were smart enough to make her their lead vocalist, only occasionally sharing the spot with her.
+
+
+
+HENRY:	We were just starting up and DJ Matt didn’t think we got what it took to make it on our own. He said that we had to work with Funke. At first, we didn’t like the idea, especially as we had different styles. We were Heavy Metal, and she was a combination of Afro-pop and soft rock. But after we met her and started working together, we realized how lucky we were.
+
+
+
+NICK:	She asked me for our Demo tape. She said that she wanted to listen to it to better understand our style. I gave it to her. A week later, she came back with the song ‘Enough’. When I read the lyrics, I was blown away. We recorded it in two days and as soon as we finished, we knew that it was going to be a hit.
+
+
+
+ME:	They released their first song ‘Enough’ on the 25th of February 2005. 
+
+ENOUGH
+
+
+
+VERSE 1
+
+I am tired of being treated like I don’t matter,
+
+Tired of being ignored.
+
+So tired of feeling insecure,
+
+Tired of crying, when my tears don’t matter.
+
+
+
+VERSE 2
+
+Tired of being a pushover,
+
+Tired of being everyone’s savior, when no one has got my back.
+
+Tired of being scared all the time,
+
+Tired of being disappointed, again and again.
+
+
+
+CHORUS
+
+I have had enough,
+
+It’s time for me to get up and go.
+
+
+
+I am not giving up,
+
+I just know, it’s time to let go.
+
+
+
+My heart is closed up,
+
+I have learned to love myself most of all.
+
+
+
+
+
+VERSE 3
+
+I gave my heart out, but it came back to me in pieces, 
+
+Gave out love and got pain in return.
+
+I cried all day, and stayed up all night.
+
+What did I do to deserve all this hurt?
+
+
+
+VERSE 4
+
+Tired of all the tricks and lies,
+
+Tired of being played like a game.
+
+You pretended to be a perfect gentleman outside,
+
+But behind closed doors you were a monster.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+I have died every night,
+
+Waiting for things to change.
+
+Now I live to tale the tale. (2X)
+
+
+
+VERSE 5
+
+I am better than this.
+
+You are never going to change,
+
+No matter how long I stayed.
+
+I am going to love myself, and demand respect.
+
+
+
+VERSE 6
+
+All of my self-worth has been stripped away.
+
+I am now just a shell of who I used to be.
+
+But I have to be strong, and believe. 
+
+I know, I deserve better than this.
+
+
+
+CHORUS
+
+
+
+VERSE 7
+
+Yes, there can be love without pain,
+
+And I know that I will love again.
+
+I will carry my scars on my back.
+
+I am a survivor, I will be fine.
+
+
+
+CHORUS (INFINITY)
+
+
+
+
+
+ME:	It was an alternative rock song about being bullied and standing up for oneself. It emphasized how walking away from that bully was the best option. That song struck a chord with every person who was ever bullied, either at school, work or home. It was a song that everyone could relate to, and it got massive fan acceptance.
+
+The video featured a couple who was constantly arguing and then making up and kissing. But it clearly showed that one person was taking advantage of the other until finally, the victim revolted and walked away, leaving the bully in tears.
+
+The song was no 1. On Billboard Hot Modern rock tracks, Billboard Mainstream and Billboard Hot 100. It maintained that position for several weeks and later got them a star at the Rock and Roll Hall of Fame.
+
+
+
+FUNKE (E! Interview 2008):	My secret to writing songs is simple. I look around and observe my environment. I figure out what it is that bothers people the most, but that they are also afraid to talk about. Then I write a song about it. People get drawn to those songs because it makes them feel that there is someone out there who understands what they are going through. 
+
+ME:	Funke got along well with the boys and by May that year, they were able to release their second hit called – ‘Believe’.
+
+
+
+BELIEVE
+
+
+
+VERSE 1
+
+Even though things are bad now, they will get better.
+
+The world may be against you, but you will prosper.
+
+When everything is falling apart, just believe,
+
+That they will fall right into place, eventually.
+
+
+
+VERSE 2
+
+Don’t be afraid to go after your dreams, take a leap of faith and prevail.
+
+Do not be limited by your fears, you can do it.
+
+Take that step, go forward, and don’t stop.
+
+Your story will not end until you give up.
+
+
+
+CHORUS
+
+Hold on, stay strong and keep the faith.
+
+Don’t give up, keep pushing on and keep the faith. (2X)
+
+
+
+VERSE 3
+
+No matter how dark the night is, the sun always comes up at dawn.
+
+No matter how bad your situation is, believe that God will see you through.
+
+When you are at the end of your rope, start learning how to fly.
+
+You are a diamond in the rough, polish yourself until you shine.
+
+
+
+VERSE 4 
+
+You are a soldier; you will face many battles.
+
+Just do your best and let God take care of the rest.
+
+When you are swimming against the tide, and you’ve lost hope.
+
+Have a little faith, and you shall overcome.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+Never ever give up, never ever give in.
+
+Just keep the faith, and just believe.
+
+
+
+Never ever give up, never ever give in.
+
+Just keep the faith, and just believe.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	It is another alternative rock/pop song about sadness and depression, but most of all, it is about believing in God and having hope. It chattered the popular misconception about Rock stars being Devil worshipers and not believing in God. This song actually emphasized that only God could give you comfort in times of hardship. It further proved to people that there are Rock stars who believe in God as much as anyone else.
+
+That won them a whole genre of new fans, who would not have listened to their music otherwise. Their fans were now in the tens of millions range and they were certified superstars.
+
+
+
+DJ MATT:	I couldn’t believe the incredible fan response that they got. It seemed that they actually chattered the billboards. Who knew that it would take a girl from Africa to come to America and teach them how rock music was made? It was wonderful and perfectly highlighted her incredible talent. 
+
+DR. AYO:	It just showed her amazing understanding of music. You see, she was not just talented in singing and writing music, but she could also adapt and adjust to different sounds without compromising her principles. When I met the band for the first time, I wasn’t sure about them. I even expressed my fears to Funke, but she told me not to worry, and that she would adapt. And she did very well.
+
+
+
+ME:	In June 2005, they officially released their album “Keeping Faith” along with the third Video called “Hate”.
+
+
+
+HATE
+
+
+
+VERSE 1
+
+Sometimes, people hurt you deeply,
+
+For no reason, but out of jealousy.
+
+People you love and trust,
+
+That is what hurts the most.
+
+
+
+VERSE 2
+
+But do not ever pay back hate with hate.
+
+Always answer back with forgiveness.
+
+Though it may not be easy to swallow your pride,
+
+But letting go, will give you peace of mind.
+
+
+
+CHORUS
+
+Hate is a poison to the body, and a cancer of the soul.
+
+It consumes your mind and makes your heart burn.
+
+You lose all focus and clear thinking.
+
+You are a ship, and it is sinking. 
+
+VERSE 3
+
+When you have a good heart, you get easily hurt.
+
+That is because you easily trust.
+
+But never stop loving or being kind.
+
+Do not let the world, make you hard.
+
+
+
+VERSE 4
+
+People will always try to break you,
+
+For no reason, but you, being so good.
+
+But don’t let it get to you.
+
+Being strong, is what makes you.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+Never give in to the bitterness.
+
+Do not let anyone steal your sweetness.
+
+Always kill them with kindness,
+
+And love will win in the end.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	It was a dark and slow, heavy metal rock song with soul undertones. Funke was the main singer, but Nick’s voice was shadowing hers, and making the song even more haunting. In the video, a young girl was seen running on a deserted road, and occasionally stopping to scream at no one. In some scenes, she cuts herself and in others, she pulls at her hair. Towards the end, she begins to calm down, and then she turns into a wolf and keeps on running.
+
+That song also topped the charts and got impressive fan acceptance. Their Album – “Keeping Faith” went three times platinum and was certified by the Recording Industry Association of 
+
+America (RIAA). Every song on it was a hit and it went on to sell over sixty million copies worldwide.
+
+
+
+HENRY:	It was a very successful album. It was better than we had all anticipated. Everywhere you went people were singing our songs. It was wonderful and we wanted to make more music with her.
+
+
+
+STRIKE:	Funke was a very hard worker. She was always the first to come to the studio and the last to leave. She wrote songs, wonderful songs. It was as if everything she wrote became a hit. She was an asset to us. She also did a lot of duets with different artists on the album, thereby becoming very popular within a short time.
+
+We went on a world tour and one of our stops was Lagos, Nigeria. Man, you should see how well we were received. Everybody loved her. People were fainting and crying. We were like kings. It felt good. I mean, I had a taste of what it meant to be a rock star. And it was because of her.    
+
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem8" class="poem-page">
+    <h2>Chapter 7: CHOCOLATE DREAMS</h2>
+    <div class="poem-text">
+
+      ME:	Following the huge success of their album – “Keeping Faith”, DJ Matt wanted to renew his contract with The Silver Rose for another album, but Funke turned him down. She was keen on continuing with her solo career. She felt that she had gotten enough exposure from the DJ Matt’s contract that she could dare to venture out on her own and to test the American waters. She did feel guilty disappointing the band and DJ Matt, but she was still sore from what Afrika Records did to her. She felt safer being in control of her career. However, she was wise enough not to cut them off completely.
+
+By June 2006, she started working on her album – “Dark Chocolate”. It was a combination of smooth Jazz, blues and soul, a complete opposite of her last album “Keeping Faith” which was a combination of Heavy Metal and Alternative rock. On that album, she collaborated with various artists, to boost sales. She even duets with her former band members, The Silver Rose, who continued to make music but were less successful without her. She invited a few artists from Nigeria on the album as well to lift them and introduce them to the American market.
+
+
+
+FUNKE (E! Interview 2008):	It was the least I could do for them. I was lucky to have met DJ Matt who brought me here but not everyone was that lucky. So, I helped out as much as I could.
+
+
+
+ME:	There were rumours that she was dating some of the Male Nigerian artists. But Funke made sure that she squashed each rumour before it got out of hand. But while working on that album, she featured a famous American rapper in one of her songs. He was a gangster rapper from Detroit called “G thug.” Funke got close to him, and rumours also started about an affair between them. As usual, Funke’s reps quickly denied it, citing that she was too focused on her work.
+
+The album was officially released in October of that year under her record label- ROSE RECORDS and was certified triple platinum by the Recording Industry Association of America (RIAA) and was Funke’s best album to date. There were twelve songs and six videos on the album. The first single was ‘Silky Smooth’ and was released on the 8th of August 2006, three months before the official release of the Album itself. 
+
+SILKY SMOOTH
+
+
+
+VERSE 1
+
+In your arms, I feel so alive,
+
+So warm and ohh so safe.
+
+Your heartbeat, is like music to my ears,
+
+And your warmth, ohh so good.
+
+
+
+
+
+CHORUS
+
+Your love is like chocolate,
+
+So good, so very wonderful.
+
+So velvety and silky smooth,
+
+So good, ohh sooo good.
+
+So velvety and silky smooth.
+
+
+
+VERSE 2
+
+Don’t ever stop loving me.
+
+I don’t know what I am without you.
+
+You are the air that I breathe and the blood in my veins.
+
+If you stop loving me, I won’t live again.
+
+
+
+CHORUS
+
+
+
+VERSE 3
+
+
+
+Love is you; love is life. 
+
+Without you, there is no love.
+
+Without love, there is no life.
+
+
+
+CHORUS (Repeat)
+
+
+
+ME:	It was a romantic slow jazz number covered by a single guitar in the background, but slowly incorporates other instruments as the song progresses. It professes love and devotion to one’s partner, almost to the point of obsession. The repetitiveness of some of the lines made it easy to remember and also made it enjoyable.
+
+The accompanying video was directed by DJ Matt himself. It showed her lying on a large bed with white sheets, with a white background wearing a white silk gown with white faux fur trimmings surrounded by lots of goose feather pillows. The sheets were white silk as well as the curtains. Feathers were floating about adding a soft ambiance to the whole scene. She was rolling and singing seductively. Another scene showed her walking out into a beautiful garden of white roses and butterflies. She was wearing white denim trousers and a white fur sweater with white fur boots on her feet. As she moved the butterflies fluttered about and one of them landed on her head.
+
+It was a beautiful video for a sweet song and was well received by fans worldwide and provided a launching pad and the theme for the rest of the songs on the album.
+
+The second song of the album was released on the 12th of September 2006, called -‘The calm’, another smooth jazz number with loud drumming in the background, and had soul references. It talked about the turmoil and uncertainties of life and love bringing peace to the heart.
+
+
+
+
+
+THE CALM
+
+
+
+VERSE 1
+
+I have sailed through terrible storms,
+
+Big waves and whirlpools.
+
+Lost my crew and along with my life.
+
+The captain always goes down with ship after all. 
+
+VERSE 2
+
+I have lived through wars,
+
+Violence and senseless bloodshed.
+
+Led my men gladly to their deaths,
+
+For glory and for Honor.
+
+
+
+CHORUS
+
+But nothing compares to loving you.
+
+Matters of the heart are complicated.
+
+You bring peace to my life.
+
+In the turmoil of my heart, you are the calm.
+
+In the turmoil of my heart, you are the calmmmm.
+
+
+
+VERSE 3
+
+Earthquakes and volcanoes,
+
+Tsunamis and Hurricanes.
+
+Let the world overturn on its feet, I don’t care.
+
+As long as I have you, I have nothing to fear.
+
+
+
+CHORUS (2X)
+
+
+
+You are the rainbow after the rain.
+
+You are the peace after the war.
+
+You are the calm after the storm.
+
+
+
+CHORUS (Repeat) 
+
+ME:	The first scene of the accompanying video was her on a ship on a stormy sea at night. She struggled to keep the mast up along with her crew, but the storm got the best of them. A blinding flash hit them, and the ship started to sink. The second scene was that of a battlefield that looked like World War II. There were dead and wounded men everywhere and fighting was still going on. She was a general leading her men on a charge and an explosion went off, annihilating all of them to oblivion. A third and final scene showed her floating peacefully above and looking down on first the sunken ship and then later the bloody battlefield.
+
+Although some critics claimed that the lyrics were too violent, Funke defended it, saying that she was speaking in metaphors. And that they shouldn’t take it so literally.
+
+The third single of the album ‘Dark Chocolate’ was a dance R&B number called ‘Sexy’. Released on the 25th of September 2006. Its video featured her dancing in matching outfits with other dancers in front of three different backgrounds. They had big hair that blew about in the wind.
+
+The fourth video was another dance number called ‘Sweet and sour’. It was a song about the complexities of love. The good, the bad and the ugly side of being in love were addressed perfectly and hilariously. She collaborated with G Thug, who rapped on the song.
+
+Next was the fifth video called ‘Black Beauty’. It was a powerful jazz number with distinctive instrumentals in the background. The video was simple and dark. It showed a beautiful black thoroughbred running on water none-stop at what looked like dawn. The music started slowing but built momentum as it went and so did the horse.
+
+By the end of the year, all of those songs had topped the Billboard 100 charts and were following each other on the top ten of every chart. They also chartered records in America, the UK, Australia, Asia and Africa. She was nominated for different awards, including Best Album of the Year, the Best Video Award for ‘Silky Smooth’, Best Vocals for ‘Sweet and Sour’, Best Female Artist for the Year 2006 and a bevvy of other awards. She won most of them.
+
+She performed the song black beauty at the American Music Awards (AMA) that November along with Barry Manelo. Everyone was wowed. She later took home the award for Best Female Vocalist of the Year.
+
+On the 11th of May 2007, she was approached by the makers of Bond movies to record a song for the next Bond movie – Falcon’s Flight, which was to be released in 2008. So, she worked on her song ‘Soar’. It was originally written as oneof the songs on the album ‘Dark Chocolate’, but she changed it to a song that was more appropriate for a Bond movie. 
+
+SOAR
+
+
+
+VERSE 1
+
+Your smile is beautiful like the sun,
+
+But your heart is black as midnight.
+
+You have the face of a saint,
+
+But you are the devil in disguise.
+
+
+
+VERSE 2
+
+Heartbreaks and lies,
+
+Backstabbing and disappointments.
+
+Those gifts of yours,
+
+Are more than a girl can take.
+
+
+
+CHORUS
+
+As a falcon glides in the sky,
+
+I will rise and rise again.
+
+I will not fall, I will not fail,
+
+I will soarrrr. I will soarrr.
+
+
+
+VERSE 3
+
+Kill meeee, or leave meee,
+
+Stick and stones will never break me.
+
+Whatever you think of me, there is more.
+
+I will never be grounded, I will soar.
+
+
+
+VERSE 4 
+
+Your beautiful lies cannot deceive me.
+
+Your whispers and your tricks.
+
+Come to me if you are brave.
+
+Come to me if you are willing to die.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+You like to break hearts,
+
+It’s a game to you.
+
+You like to kiss the girls and make them cry.
+
+I will feed your medicine to you.
+
+
+
+CHROUS (REPEAT)
+
+
+
+ME:	Thesong was threeminutes long and had a dark and dangerous musical ambiance about it. In the background there was a strong keyboard and guitar presence. It also showcased her vocal chops and her ability to hold a note for long. It was said that she held the last note so long that she almost passed out by the end of it. But it could also be due to her being on the fifth day of her seven-day fruit cleanse.
+
+The musical video showed the silhouette of girls dancing seductively in a typical James Bond movie fashion. There were fire and explosions in the background and guns floating about.
+
+She also featured her former bandmates ‘The Silver Rose’ in the live performance of the song at the People’s Choice Awards in January 2008, where she won the coveted title of People’s favorite album of the year. She also won a Grammy award for the song and topped the billboard 100 charts of 2008 as well as other charts in various countries, including the UK, solidifying her status as a rock star, an African Rock Star. Suddenly, people started paying attention to African Music; and it was because of her.
+
+She also paid more attention to her Charity and even teamed up with another famous African Musician Akon to create another charity to protect children whose parents died of HIV/AIDS. That year, she was named African of the Year. 
+
+
+
+FUNKE (Interview on OPRAH 2008)	I loved every award that I got in my life, because each award tells a story about a certain stage in my life. But the one that stood out for me was the “African of the Year” award. You see, there is a proverb in my place which goes: “You know you are successful when you go back home, and your people welcome you with open arms.” Well, to me that award meant that my people were happy with me. And it was handed to me by Nelson Mandela himself. What could be better than that?
+
+
+
+ME:	Funke was not one to relax. She immediately started working on her next studio album, which she called ‘Retro. The album had twelve tracks and was released under her record label-ROSE RECORDS. It was a combination of old-school jazz, blues and disco tracks. On the 7th of September 2008 she released its first single, ‘Tap Tap Tap’.
+
+
+
+TAP TAP TAP
+
+
+
+VERSE 1
+
+I met a guy at the club last night,
+
+He was tall and so very fine.
+
+He smiled at me, and I smiled right back.
+
+I knew then that it you were going to be mine.
+
+
+
+
+
+VERSE 2
+
+He came over and said hi.
+
+His smile was so very white.
+
+We talked and we danced and danced.
+
+And we partied all through the night.
+
+
+
+
+
+BRIDGE 
+
+Zibri zibri zibri pipi
+
+Tap tap tap
+
+Zibri pi pi pi
+
+Zibiri tap tap tap
+
+Zubruzubruzuburuzubru
+
+
+
+
+
+VERSE 3
+
+We danced and danced; we danced all night.
+
+His smile so white and he was so fine.
+
+We had some fun, then partied all night.
+
+It was written in the stars alright.
+
+
+
+REPEAT VERSE 2 TWICE
+
+
+
+ME:	The song was a mixture of swing, tap dance and quick step with echoes of the soul and Jazz. The sounds of bass, tuba saxophones and some light drumming could be heard in the background. It was very energetic and inspired the feet to tap. The accompanying video was a tribute to the 1940s black swing era. It depicts people dancing in a club with ladies wearing sparkly flapper dresses or fringed blouses with knee-length flay skirts and low-heeled sandals while the men wore tailored suits with shiny buttoned details and dazzling cufflinks. They were dancing very fast, and they would make a show of strength and agility by lifting their female partners and swinging them over their heads and then placing them gently back down, hence, the name-swing music.
+
+Overall, it was a happy song that was well received by fans all over the world. It topped charts and dominated for weeks and was heavily downloaded on I-tunes. At the American Music Awards (AMA) it won both female vocal and video of the year of 2008.
+
+The second single of the album ‘Retro’ is called ‘Boogie Night’. It was an old school electric-disco number that was energetic and colorful. Set in the 70s era, the video was of people dancing on roller blades under a disco ball. Big hair, bell bottoms and short shorts were the rule of the day. 
+
+BOOGIE NIGHT
+
+
+
+VERSE 1
+
+There is a bug going around,
+
+Affecting everyone in town.
+
+With every setting of the sun,
+
+They all come out to have some fun.
+
+
+
+CHORUS
+
+Hit the dance floor and let it go.
+
+Just let it go on the floor.
+
+Just hit the dance floor and let it go.
+
+Just let it go, let it go.
+
+
+
+VERSE 2
+
+So, what’s this madness about?
+
+Everyone spinning around?
+
+Disco with a little bit of funk,
+
+Is the cure for this bug.
+
+
+
+CHORUS
+
+
+
+VERSE 3
+
+So, when you hit the dance floor,
+
+And the music takes you on,
+
+And you lose it from your core,
+
+Don’t let it steal your soul. 
+
+
+
+CHORUS (REPEAT)
+
+
+
+ME:	The song became a no. 1 hit in over 40 countries including America and Nigeria. It got two Grammy nominations and had over five hundred million downloads on iTunes.
+
+The third single of the album is an old-school electro-swing lounge music called ‘Take my Breath away’. It reflected the 1920s era. In the video, they were in a SPEAK-EASY bar. Men and women dressed elegantly in tailored suits and fitted structural gowns with white gloves. Funke was on a stage, dressed elegantly in a strapless, fitted red floor-length gown with white elbow-length gloves on her hands and singing into a vintage microphone. She was flirting with a handsome man while she sang. Then some time later, another man got jealous of them and attacked the handsome man, and a fight broke which quickly escalated. In the middle of all the chaos, the handsome man found her, took her hand and they ran out of the bar together. Then the words THE END appeared on the screen.
+
+
+
+TAKE MY BREATH AWAY
+
+
+
+VERSE 1
+
+I don’t know who you are,
+
+I have never seen you before.
+
+But the way you take my breath away,
+
+It’s a feeling that I have never known.
+
+
+
+VERSE 2
+
+See, I aint no cheater,
+
+Nor do I have a cheating heart.
+
+But even though my man is close,
+
+You are the one on my mind.
+
+
+
+CHORUS 
+
+Ohh you take my breath away.
+
+Ohh you take my breath away.
+
+Yes, I try to resist,
+
+Feeling like this.
+
+But every time you look my way,
+
+Ohh you take my breath away.
+
+
+
+VERSE 3
+
+Are you a criminal, or a super star?
+
+Because your face is so fine, but full of danger.
+
+My man has no idea,
+
+Every time I look in your eyes,
+
+
+
+VERSE 4
+
+When you smile at me so bright,
+
+And wink at me like that,
+
+I can’t help but smile,
+
+Through the beating of my heart.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+My man doesn’t know,
+
+Nor would he wanna know.
+
+Secrets of the heart should never be told,
+
+For knowledge is dangerous. 
+
+CHORUS (REPEAT)
+
+
+ME:	The song got various positive nods from music critics. They loved the vintage style and the beautiful melody. It was also well received by fans worldwide, appealing to both the young and the older generations, who call it timeless. It also shot to no. 1 in various countries. At the Billboard Awards that year, it won the title of song of the year.
+
+The fourth video was a romantic R & B/Blues ballad called ‘Under the Moonlight’. Featuring artists like Joe and Sade. It talked about a first-time kiss between two young lovers under the moonlight. The video was directed by Funke herself and it turned out beautifully.
+
+The fifth single/video was ‘Flower Child’, a disco dance number chronicling the late 1960s era of free living. She featured Madonna in the video and directed it herself. It was a song about love and world peace.
+
+The sixth and final video of the album is called ‘Nasty’. It was a straight-up hip-hop/ Funk number chronicling the 1980s black hip-hop culture. Punk hair, big sneakers, big rings and multiple chain necklaces were in fashion. The song talked about finding love on the mean streets of Harlem. She featured Dr. Dre on the track.
+
+
+
+On the remaining songs of the album, she worked with the likes of DJ. Blast, Charlie and the gangster rapper known as G Thug. His real name was Alvin Martin, but he was known by his stage name thug. Funke and G Thug got very close while working together. Rumours started to fly again about a possible affair between them, but Funke again denied it and that offended him. He went on HOLLYWOOD 360 radio and claimed that they had a sexual relationship and that he was not happy that Funke was denying it. She did not comment on that.
+
+The album “Retro” however; won Best New Album and loads of other awards, including best new song for the track “Under the Moonlight.” At the MTV Video Music Awards (VMAs), in November 2008, she bagged eight nominations and four awards, including Favorite Video for ‘Tap, Tap, Tap’ and Favorite Song for ‘Boogie Night’, which she also performed live on stage.    
+
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem9" class="poem-page">
+    <h2>Chapter 8: NEW SCARS</h2>
+    <div class="poem-text">
+
+      ME:	In 2009, Funke started to invest in various things such as real estate, shares, farms and whatever else she could lay her hands on. She had made a lot of money from her music, and she didn’t want to make the mistake of past musicians who made a lot of money very fast and then spent it all in a very short time and went broke. She wanted to have a backup plan in case the music money stopped coming in.
+
+She also made plans for her fashion line but didn’t start it immediately. She wanted to wait for the perfect time. Perfume companies like ‘Royal Essence’ and cosmetic giants like ‘Deep Roots hair products’ also hired her to endorse their products. She made an easy three million dollars just by becoming the face of those products.
+
+
+
+DR. AYO:	One of the perks of being a celebrity is that companies will pay you top dollar to endorse their products. The more successful you are, the more they pay you. And, you don’t have to do much, just take a couple of shots, and maybe appear in a few adverts and you are rich. Being successful in Hollywood opens many doors for you.
+
+
+
+ME:	He was right. Soon enough, movie producers came a-calling. In 2009, Funke got her first two movie roles, one in “The Wiccan” a movie about a growing witch in modern suburbia and the other in a romantic thriller “The Morning After”.
+
+With all the money she made from album sales, tours, movies, investments and endorsements, Funke was able to start living large. She splurged on things like houses, cars, clothes, jewellery and shoes. She was known to have one of the world’s most expensive shoe collections costing about two and half million dollars.
+
+
+
+BISI:	Oh, Funke loved shoes. She had a collection from every designer. She loved boots especially. There was one pair of Luis Buttons she had that cost about One hundred and twenty thousand dollars. She also had a Croak-Kelly handbag that cost Seventy thousand dollars.
+
+
+
+ME:	Despite her success, Funke never forgot her friends Bisi and Cynthia. She kept in touch with them and at every opportunity she got; she went to visit them in Nigeria or invited them to stay with her in America. 
+
+She loved them and their kids. She was very happy for them even though a part of her was a little envious of their seemingly happy lifestyles she was still grateful for having been able to fulfil her own dreams. Sadly, doing that came at the expense of having a family of her own. But she was optimistic. She strongly believed that one day she would find the right guy for her, who would not be after her fame or money, who genuinely loved her and wanted to spend the rest of his life with her and raise a family together. She never lost hope and her friends gave her their support.
+
+Funke was also very generous to those around her. She was known to surprise her staff with lavish gifts such as cars, money and apartments. That made them very loyal to her. But sadly, that wasn’t enough because she discovered that her best friend and PR manager who also handled her finances, Wale, was embezzling her money in secret.
+
+
+
+CYNTHIA:	Even with her whirlwind success, she still maintained the services of Wale and Dr Ayo. But she was at a stage where she had no other choice but to hire more financial staff, despite protests from Wale. A few weeks after she hired them, they uncovered huge embezzlement activities that were quickly traced back to Wale, over Twenty-Five million dollars. No one was shocked. Dr Ayo had been warning her for some time, but she kept turning a deaf ear to him. She trusted Wale too much to believe them.
+
+
+
+DR AYO:	You know, of all the people that Funke could rely on, she trusted Wale most of all. He helped her and protected her throughout her difficult years and if anything, she felt that she owed him her life. That is why when she found out what he did, it nearly killed her. She didn’t let them arrest him, but she had to let him go. She didn’t want to, but we all advised her to and she did.
+
+
+
+CYNTHIA: He kept saying that Funke abandoned him. That she had grown so rich now and that she didn’t need or respect him anymore and that everything she was at that moment was because of him. He felt short-changed. So, he was only taking what was his by right. Funke’s heart broke into pieces. Of course, he was lying. Funke never looked down on any of her friends. She didn’t even look down on her servants. He was just embarrassed and was trying to shift blame.
+
+
+
+ME:	As if she didn’t already have enough to deal with, Dr Ayo started having marital problems too. His wife claimed that he had abandoned her and their kids for years and that he only paid attention to his job, therefore she wanted a divorce. That led to a long and difficult 
+
+divorce and subsequent custody battle which took most of his time. Funke was by his side throughout. She had to put her tour plans on hold to help him.
+
+
+
+DR. AYO:	It was probably the worst moment of our lives. Both I and Funke seemed to hit a kind of rock-bottom and it could have easily broken us. But we had each other. And we got closer at that time than we have ever been. Even though we remained friends, we both knew on some level that it was more than that.
+
+
+
+ME:	After that, Funke set off on a tour around the world with one stop in Nigeria to promote her album ‘Retro’. That tour netted in about Forty-five million dollars, the most amount she had made at once since she started her musical career. It was a resounding success. After that, she decided to take a two week vacation to the Bahamas to recharge and clear her mind. That was the first holiday she took in a long time, and it showed.
+
+
+
+Immediately after she got back, she started working on her seventh album “Gray Skies”. It was a Pop album with echoes of Soul and R&B. The album had thirteen tracks and five videos. At the Billboards Awards show, February 2010 after-party she met a handsome Major League Baseball player for the New York Yankees by the name of Nick Brandon. He claimed to be her biggest fan and told her that he had had a long-standing crush on her since her days with ‘The Silver Rose’ and that he had been trying to get in touch with her but never got the opportunity until that night at the awards. She was flattered and they immediately started dating and the paparazzi went into a frenzy. He was a well-known lady’s man. Funke knew this, but of course, she wasn’t looking for love at that time, just a little good time. With everything that happened between her and G Thug, the last thing she wanted was another guy breathing down her neck. As fate would have it though, he wanted more.
+
+
+
+BISI: I think he reminded her of Kabelo. He had a way with words, and he was very handsome and charming. She fell for him very easily. Unfortunately, he was a hothead that was also very chauvinistic. He wanted to control Funke, but she was too smart to put up with that, so, problems started very soon in the affair.
+
+
+
+DR AYO:	A security camera recording of the birthday party of one of his friends and fellow baseball player Joe Williams a month later; showed them having a heated argument in a corridor. She even slapped him on the face and walked away angrily. Everybody was surprised. Nobody even knew were together. 
+
+
+
+ME:	A few days later, however, they were seen together, having dinner, and looking happy. There were also reports from anonymous sources that he had been visiting her in her studio late at night. So, everyone concluded that they were dating.
+
+One day, during one of his games at the stadium, the camera picked her out sitting among the crowd and displayed it on the big screen. He saw her and waved at her looking very happy to everyone’s surprise. That day, he played like a superman and won a lot of goals.
+
+After that, the relationship blossomed fast. She followed him everywhere and was at every one of his games sitting in his private booth and cheering him on. Within a short time, he had already introduced her to all his friends and family. There was even speculation that they were engaged. She was then seen around with a kitten which he bought her.
+
+
+
+BISI:	Funke loved that cat very much. He wanted a baby, but she didn’t want one out of wedlock so when he found out that she loved kittens, he bought her one. It was like their baby. She took care of it with all her heart. When she was not caring for it, he was. The media even joked about it and called it their kitten baby.
+
+
+
+ME:	Her album was not doing badly either. Songs from her new album, such as “Falling for You” and “Silver Lining” were a direct reference to their relationship. But it was the song- ‘You Are the One’, that made it clear that she had completely fallen for him.
+
+
+
+YOU ARE THE ONE
+
+
+
+VERSE 1
+
+I must have done something good in my past,
+
+To end up with someone like you.
+
+For I never in a million years,
+
+Dreamed of a love so true.
+
+
+
+VERSE 2
+
+Suddenly, the stars align perfectly in the sky, 
+
+And the days, are ever so blue.
+
+The roses smelled so nice,
+
+And my heart beats only for you.
+
+
+
+CHORUS
+
+You are the one, ohh the one.
+
+I will die for you.
+
+You are the one, ohh the one.
+
+My heart beats only for you.
+
+The one, the one, the one,
+
+You are the one.
+
+
+
+VERSE 3
+
+From the moment our eyes met,
+
+I knew I had found the one,
+
+That I have been searching for.
+
+Now I am your biggest fan.
+
+
+
+VERSE 4
+
+Ohh darling, won’t you stay with me,
+
+From now until the end of time,
+
+And our love will live on,
+
+In stories and in rhyme?
+
+
+
+CHORUS
+
+
+
+BRIDGE 
+
+Stay with me, stay with me,
+
+Until the end of time. (3 X)
+
+CHORUS (REPEAT)
+
+
+
+ME:	It was the first video from the album- ‘Gray Skies’ and was released on the 4th of April 2010 under her record label 'Rose Records’. It had a sweet and joyful pop sound with rising and falling beats that resonated with love and happiness. It went straight to number one and had millions of downloads on iTunes in the first week of its release.
+
+
+
+BISI: I think Funke fell in love with him. Even though she wouldn’t admit it, she did. Her songs betrayed her feelings. You could feel the raw emotions in the words of her songs and this one, all you feel is love.
+
+
+
+ME:	That of course didn’t go down well with G Thug. He was pissed. It was bad enough for him that she denied having a sexual relationship with him, but now she is flaunting her new man in his face. That was more than he could handle. So, he started dissing her and her boyfriend in his songs. He called her some dis-speak able names such as a whore and a succubus.
+
+At first, she paid no attention to him, but after two more songs and even more direct attacks on her man, she decided to retaliate with a diss song of her own called “Stalker”-
+
+
+
+STALKER
+
+
+
+VERSE 1:	“Who is that looking at me,
+
+Sniffing at me, kissing my feet?
+
+Who is that shadowing me,
+
+Creeping at me, dreaming of me?
+
+
+
+CHORUS:	Stop! Call the police, I have a stalker!
+
+An unwanted shadow,
+
+An annoying creep, 
+
+Stalker! 2X
+
+
+
+VERSE 2:	There is a shadow under my bed.
+
+My rear view is stuck with a face,
+
+Sneaking up on me, giving me a chase.
+
+This waking nightmare I cannot escape!
+
+
+
+CHORUS
+
+
+
+BRIDGE:	Stealing my mail every day,
+
+Annoying my friends in every way.
+
+What should I do?
+
+Where can I go?
+
+The walls have ears and nowhere is safe!
+
+
+
+
+
+VERSE 3:	There is a snake in the bushes.
+
+Let’s find a way to kill it.
+
+Slowly, quietly we approach it.
+
+Whack it on the head until it’s no longer breathing!
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:	In the video, she featured a G thug look alike that kept following her around, stealing her underwear and sniffing them. She called him crazy and sad. He was furious and he retaliated with two more songs- “Burn bitch burn” and “Delusional”, in which he also got a Funke look alike who was depicted as someone with bipolar disorder who saw things in the shadows and heard voices that no one else could. 
+
+CYNTHIA:	They gave us some very good entertainment with their little war of words. That really helped their album sales, but not their image.
+
+
+
+ME:	Everyone was waiting to see what her next move would be. But instead of letting it get out of hand, she decided to go and have a talk with him. Nobody knew what she told him or what exactly they discussed, but after that talk, he went to the press and gave a public apology to her. Everybody was surprised as usual.
+
+That same week, her movies came out. “The Wiccan” was a box office hit, netting over seventy million dollars in profit; while “The Morning After” did not do as well even though it made over twelve million dollars in profit. But it was a good start. She also made appearances on sitcoms like ‘how I Met Your Mother’ and ‘The Big Bang Theory’, and also some commercials like Coca-Cola and Cover Girl, and was also the cover girl and centrefold for ‘Vogue magazine’. She was everywhere that year!     
+
+</div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem10" class="poem-page">
+    <h2>Chapter 9: GREY SKIES</h2>
+    <div class="poem-text">
+
+      ME:	By the end of 2010 Funke was more famous than ever, her music was a success, and her businesses were making a lot of money. She was also engaged to a successful baseball player. Things couldn’t be sweeter for her. But soon, rumours started floating, about a possible rift between her and Nick, rumours which were quickly thwarted by both their reps.
+
+
+
+JOE WILLIAMS:	They were always fighting and making up. They were both very stubborn and arrogant and kept crossing each other all the time. At first, we would interfere and help them make up, but after a while, we just decided to let them be. They always found a way to make up at the end of the day. No one wanted to be caught in the middle of all that drama!
+
+
+
+ME:	A week later. Nick was spotted at a club in London drinking and dancing with strippers. He was also making out with a strange woman. He didn’t seem to care if anyone saw him, and every gossip column carried the pictures by the next day. Both parties kept mum on the issue, but it was clear that they were no longer an item. Two weeks later, she moved out of the apartment they shared.
+
+
+
+BISI: She was very sad. She thought that he was the one, but he was very insecure. He was jealous of her fame and popularity. He used to be the golden boy of America, and everyone loved him. Maybe he thought that dating her would give him even more fame, but instead, she overshadowed him. Not deliberately, but come, on! All the charity work she was doing and on top of that she kept making hit after hit, both in her music and acting. There was no way he could compete with that. But then again why should he even want to compete with her? Isn’t the whole point of having a partner to have someone who will support you and your dreams to bring out the best in you? If he couldn’t handle her success or felt intimidated by her then I think it’s best that they broke up. She deserved someone better.
+
+
+
+CYNTHIA: It’s so unfortunate that he turned out to be that way. I liked him, and in the beginning, he seemed like such a good and secure guy. I wonder what made him suddenly turn on her. Funke was not the type of person who would boast of her success or even make light of someone else’s struggles. She was a very down-to-earth and supportive person whom I am sure 
+
+that she encouraged him at every point. But sadly, he didn’t feel the same way towards her. I am glad that she dared to leave him. She deserved so much better.
+
+
+
+ME:	Funke threw herself into her work. She spent the next four months working on and promoting the album ‘Gray Skies and making the movie “Blood Brothers” in which she starred alongside the likes of Robert Deniro and Al Pacino. It was a gangster movie and it debuted at no. 3 at the box office that summer and grossed a profit of over one hundred million dollars worldwide.
+
+The remaining songs on the album ‘Gray Skies’ also did very well. They greatly reflect her heartbreak. There are songs like ‘Broken Promises’ and ‘Yesterday’ which straight-up talk about her relationship. And others hinted at her being strong and moving on. She resisted the urge to trash him in any of her songs. Songs like ‘Who You Are’ and ‘Light Show’ became anthems and favorites among young ladies.
+
+
+
+LIGHT SHOW
+
+
+
+VERSE 1
+
+We were once a perfect duo.
+
+Going strong with a dazzling glow.
+
+Like fireflies, we were burning hot.
+
+Going strong and beautiful to uphold.
+
+
+
+VERSE 2
+
+Castles upon castles we built,
+
+Together, brick by brick.
+
+But hopes and dreams shattered,
+
+And our love story was the biggest farce.
+
+
+
+CHORUS
+
+It was all but a light show. 
+
+Pretty images on the walls of my heart.
+
+Designed to entertain and dazzle.
+
+
+
+It was all but a light show.
+
+Projecting love in a laser display,
+
+On a stage of lies and deceit.
+
+Dancing to the music of my heartbreak.
+
+
+
+It was all but a light show.
+
+
+
+VERSE 3
+
+More than lovers, we were partners.
+
+More than anything, we should have built each other.
+
+But you wanted to slow me down, put me down and break me.
+
+As it turns out, I am stronger than that.
+
+
+
+CHORUS (2X)
+
+
+
+BRIDGE
+
+You never cared for me.
+
+You were jealous of me.
+
+But try as you might,
+
+You will never stop me!
+
+
+
+CHORUS (TILL INFINITY)
+
+
+
+ME:     In the video, the words of the song were displayed in large, colourful lights against a dark background. There were various doodles of hearts, cute animals and so on, in between the 
+
+words. And they kept changing colour and font as the song progressed. It was simple yet, powerful enough to get the message through.
+
+The song quickly went to the top ten on the Billboard chart list and was no. 1 in many countries, including Nigeria. And people speculated as to whether it was about her relationship with Nick or just a song. Both parties were mum on the issue.
+
+On December 1, 2010, Funke went on a Musical Tour of America and the UK, promoting her album ‘Gray Skies.’ The tour ended by December 20th just in time for Christmas and it earned her a whopping 30 million dollars in profit. With that, she could afford to take a breather.
+
+She decided to take a long overdue vacation. She went to Dubai to spend a quiet two weeks to recover from her heartbreak and get away from it all. She also wanted to get away from all the Christmas and New Year madness.
+
+
+
+DR. AYO:	You know, despite being in the spotlight all the time, Funke was in actuality an introvert. She loved having some alone time, to disappear and recharge. All that celebrity stuff could push you to the limit. If you don’t find time for yourself now and then, you might just go crazy. That is why many celebrities take drugs. But Funke was too smart for that.
+
+
+
+ME:	On the Emirate flight to Dubai, she met Prince Majid Ibn Abubakar in the first-class section. He was a very successful businessman and member of the prestigious Dubai Royal family and was also a big fan of her music.
+
+
+
+BISI: He was very handsome and incredibly rich. And he had been a fan of hers for a long time. He had always wanted to meet her but never got the opportunity to. But fate brought them together on that flight. He was perfect, but married and Funke would never date a married man no matter how much she liked him.
+
+
+
+ME:	Being married did not stop him from trying to win her heart though. He was a Muslim and therefore allowed to marry more than one wife. And since Funke was also a Muslim, he thought she would agree. But having experienced a polygamous marriage herself and knowing the toll it took on the wives and the children, Funke had no desire to get back into one. She had always wanted to marry her own husband and be the only wife, come rain or shine. So, she turned him down. That only encouraged him to go after her with more gusto. 
+
+CYNTHIA:	Funke just wanted to get a few weeks of peace and quiet. But he wouldn’t let her have it. First, he invited her to his house for a lavish dinner alongside some other Arab dignitaries including HRH Prince Hamdam. She only accepted to go because of the dignitaries. She didn’t want to appear impolite. But afterwards, he kept calling her, sending all sorts of gifts to her hotel room, like jewellery, clothes, shoes and bags. He gave her a car and when he found out that she did not have a house in Dubai he gave her a mansion in the famous Palm Jumeirah area. But she turned all of it down.
+
+
+
+ME:	He showered her with gifts. Expensive Diamonds, clothes, and shoes, and even gave her mansion in the palm Jumeirah section of Dubai but she turned it all down. A few days after she got back to the States, he bought a two-and-a-half million-dollar yacht and named it ‘Miss Funke’. It sent the media world into a frenzy and also got the attention of Prince Majid’s wife who started to attack Funke.
+
+
+
+CYNTHIA:	Mrs Majid was not happy about it. She was so upset that she started to attack Funke through newspapers and gossip columns. She called Funke a classless whore and a dumb bitch. Funke was offended, more so for the fact that she wasn’t even dating the Man. She tried to be civil and reached out to the woman but to no avail. It seemed that because Funke turned him down, Prince Majid refused to be honest with his wife. In fact, not only did he make her believe that something happened between him and Funke, but he also made her think that it was Funke who came on to him because he was rich. That she was a gold digger.
+
+
+
+ME:	And to add to Funke’s plight, different gossip columns started attacking her and calling her ‘a man snatcher’. Even some of her fans sent her hate mail and death threats because they were disappointed in her for going after another woman’s husband. Nick jumped on the train to add his insults. Throughout that time, it was only Ayo and G Thug and her friends Bisi and Cynthia who stood by her. It was a trying period for her.
+
+The attacks came to a stop only when Funke threatened to sue the Prince and his wife. It was a very embarrassing situation for her and one more hit to add to her list of painful experiences for that year. But she was soon able to put it behind her and bury herself in writing. Music was the only constant in her life. It was the thing that gave her joy no matter how sad she was. Writing gave her peace. So, she spent the next couple of months writing more than forty songs. When she was done, she selected thirty of them and made a double album of fifteen songs each. Then she sold the remaining ten songs to other artists.
+   
+ </div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem11" class="poem-page">
+    <h2>Chapter 10: SPLIT NOTES</h2>
+    <div class="poem-text">
+
+      ME:	In 2011, Funke released a double album containing thirty songs. It was the first of its kind; no one had ever made a double album and released it at the same time. People were impressed. She named the album ‘Bitter/Sweet’. Album A-Bitter was composed of angry songs like ‘Hater’, ‘Burn’, ‘Snake Eyes’ and so on, while Album B-Sweet had some romantic songs and happy upbeat songs like ‘This Thing Called Love’, and ‘Sweet Heaven’, and ‘Rainbows and Ponies’. Many of the songs in the album were about her heartbreaks including her father’s betrayal. She poured her heart out in those songs. It was like some kind of therapy for her soul. She talked about everything that was bothering her and eating away at her. Then the songs on album B were about the good times she has had, her dreams and hopeful wishes. She did not insult anybody or mention any name, but she sure joked about the awful things that happened to her and even her multiple relationships and breakups. The first single she released for side A (Bitter) was called ‘She-Queen’.
+
+
+
+SHE-QUEEN
+
+
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+
+
+
+
+I am a queen, yes kneel and kiss my feet.
+
+Tell me how much you adore me.
+
+Look at me in awe and revel in my beauty.
+
+
+
+My subject come to me, Declare your devotion for me.
+
+Cry, as you confess your loyalty.
+
+Tell me how my presence fills you with glee. 
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+
+
+Every man wants to be my king, but do you have what it takes to sit,
+
+On a golden throne next to me, to rule for eternity?
+
+Are you blue blooded enough to be king?
+
+
+
+With a fly attitude and a gangster lean?
+
+I am not looking for no baby daddy.
+
+If you fancy your self-royalty come find me.
+
+
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+
+
+
+
+Some of these guys try to dull my shine.
+
+But I am so blessed, they can only try.
+
+To all my sisters working nine to five,
+
+Respect!
+
+
+
+Before you think of disrespecting me.
+
+Know that you don’t own me.
+
+I live in my own house and make my own money.
+
+I hustle, I don’t depend on nobody. 
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+
+
+
+
+I am not a toy or your property.
+
+If you want me, you have to earn my loyalty.
+
+Do not even think of controlling me.
+
+I am a she-queen, I answer to nobody.
+
+
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+I am the she-queen, so you better respect me.
+
+
+
+ME:	The song was a very upbeat Rap/Hip hop hybrid that screamed girl power! It was meant to intimidate and demand respect. It was the ultimate feminist song. In the video, she was wearing a golden crown and sitting on a throne of men, who were on all fours. There were two men on either side of her, fanning. In some scenes, she was in a litter carried by men taking a stroll around town. People knelt as she passed them, and she waved at them graciously. As she moved from one place to another, different suitors asked for her hand in marriage and offered her various gifts. But she turned all of them down until one offered her a poem and professed his love for her while kneeling. She accepted and invited him back to her palace to sit on the throne next to her. They kissed and the letters – THE END appeared on the screen.
+
+The song was obviously an attempt to laugh at her various failed relationships. It was also a clever way to divert attention from her latest scandal involving the prince and his wife. People called her various degrading names in response to the scandal, and she wanted to demand respect back. She wanted to show them she was strong and independent and definitely not a gold digger. The message was clear; she was only single because she hasn’t yet met a man that deserved her!
+
+The song was well received by her fans and soon enough everyone was singing it. It quickly topped charts everywhere and earned positive nods from feminist bodies. 
+
+
+
+The first single on side B (Sweet) is called ‘This thing called Love’.
+
+
+
+THIS THING CALLED LOVE
+
+
+
+VERSE 1
+
+When you love somebody,
+
+You think about them all night and all day,
+
+And when you wake up in the morning,
+
+You just can’t wait to be with them.
+
+
+
+VERSE 2
+
+Loves makes a total stranger,
+
+Becomes more precious than gold.
+
+You may not know how or even why,
+
+But you can’t stand to be apart.
+
+
+
+CHORUS
+
+This thing called love,
+
+It's a wonderful feeling,
+
+That hurts but hurts oh so good.
+
+
+
+This thing called love,
+
+Is a blessing and a curse.
+
+But what is life without love?
+
+
+
+VERSE 3 
+
+It sneaks up on you,
+
+When you are not looking.
+
+Then steals your heart and your head,
+
+All rationality escapes.
+
+
+
+VERSE 4
+
+It makes you sick, it makes you cry.
+
+It makes you dance; it makes you laugh.
+
+It gives you courage and makes you fearless.
+
+You may not know it, but baby you are insane.
+
+
+
+CHORUS
+
+
+
+VERSE 5
+
+It grabs hold of your heart and won’t let go.
+
+It gives you a hug, right in your soul.
+
+Sweet like plums, sours like tamarind.
+
+Run as fast as you like, but there is no escaping it.
+
+
+
+CHORUS
+
+
+
+VERSE 6
+
+Love is good, love is life.
+
+What is the point of living?
+
+If you’ve got no love in your heart? (REPEAT 3 X)
+
+
+
+ME:     It was a soul and R & B song that was perfect for a romantic dance with your significant other. In the video, she was sitting in a recording studio and was trying to record a song. It 
+
+started with her writing the lyrics on a paper, but slowly graduated with her singing the song in a sound booth.
+
+It debuted at No. 7 on the billboard charts and later went to No. 2. It also topped charts in various countries.
+
+The second single from the album A was a track called ‘Bipolar’. It was a pop/reggae mixture that has a quick tempo. It was directed by Funke herself.
+
+
+
+BIPOLAR
+
+
+
+VERSE 1
+
+Hey baby, why you get nervous whenever your phone rings,
+
+And you always delete your call history?
+
+
+
+Please tell me why you keep late nights,
+
+Only to come home drunk and tipsy?
+
+
+
+And when I ask you where you’ve been,
+
+You act a fool and say I was tripping.
+
+
+
+I can read between the lines you know.
+
+I can tell you take me for a fool.
+
+
+
+CHORUS
+
+This love is bi-polar.
+
+One day it is hot and sweet,
+
+And we start making plans,
+
+Next day it makes me weep,
+
+And I wonder if you are a mistake. 
+
+And I wonder, and I wonder.
+
+
+
+VERSE 2
+
+You told me you were hanging out with your boy,
+
+But I found out that he was out of town.
+
+
+
+I don’t understand why you never want me to visit.
+
+Something tells me you don’t want me to be seen.
+
+
+
+If I am the only one then why,
+
+Can’t you look me in the eyes and say it?
+
+
+
+CHORUS
+
+
+
+VERSE 3
+
+Should I stay or should I go?
+
+Are you worth fighting for?
+
+
+
+Maybe I am crazy for seeing the good in you.
+
+Despite all the red flags waving, I want to believe.
+
+
+
+But I can’t stand the lies and your mood swings.
+
+That is why a am walking away with my dignity.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:     In the video, her man was two/timing on her with another woman. She tried to act the dutiful wife, but after a while, she took her things and left. And when the man came home, he 
+
+met an empty house and a note. Then, He was full of regrets. The song went to No. 5 on the billboard 100 in its first week of release and then went up to No. 1 and stayed there for three weeks. It also topped charts in the U.K, and Africa.
+
+The second song on the sweet album was an adventure theme song called – “The open road”:
+
+
+
+THE OPEN ROAD
+
+
+
+VERSE 1
+
+With a head full of dreams and a heart filled with hope,
+
+I take to the open road,
+
+On a journey to an unknown destination.
+
+As the world lay before me, full of promises of good fortune.
+
+
+
+VERSE 2
+
+All fear and self-doubts shaken away.
+
+The burdens of the past left behind.
+
+The road may be narrow, and my vision limited,
+
+But I have to keep going, come what may.
+
+
+
+CHORUS
+
+So goodbyyyye, goodbyyyye my love,
+
+I am going to pick up my things and go.
+
+Goodbyyyye, goodbyyyye my love,
+
+I’ve lost my heart to the open road. (2X)
+
+
+
+VERSE 3
+
+My curiosity keeps pushing me forward.
+
+My determination and zeal are my weapons. 
+
+Even though I cannot see beyond the horizon.
+
+To achieve my dreams, I have to be anywhere but here.
+
+
+
+VERSE 4
+
+The next chapter of my life is about to be written, and I hold the pen.
+
+I thirst for adventure and hunger for knowledge.
+
+I may or may not get there, that is not the point.
+
+The lesson is in the journey itself, life must be lived to the fullest.
+
+
+
+CHORUS
+
+
+
+VERSE 5
+
+Trying to stand apart from the crowd, in a world of conformity.
+
+That is the hardest battle to keep fighting.
+
+So, I am going to trust my heart and be brave.
+
+I must cast away my fears and take the next step.
+
+
+
+VERSE 6
+
+And do the impossible, in order to achieve the unimaginable.
+
+Taking in everything, through the eyes of a child.
+
+To find happiness, I must take on the world,
+
+Climb all the mountains, and weather all the storms.
+
+
+
+CHORUS (INFINITY)
+
+
+
+ME:     It was a fast-paced country song with the sounds of hand clapping and feet tapping and a flute playing loudly in the background. In the video, she was seen packing her clothes in a 
+
+suitcase, picking up her guitar and then jumping into her car to drive away. After that, she was driving fast on a dry country road with the wind in her hair and wearing Rayband sunglasses.
+
+
+
+The third song for side A was a soft pop song called Awake:
+
+
+
+AWAKE
+
+
+
+VERSE 1
+
+I used to be a happy, young, and carefree.
+
+I saw the best in everyone and could do anything.
+
+Every day was filled with rainbows and ponies, and sweet cotton candies.
+
+
+
+VERSE 2
+
+I dreamed with my eyes open, of a knight in a shiny Armor.
+
+Riding a white horse and slaying all my dragons.
+
+Life was simpler and dreams always come true.
+
+
+
+CHORUS
+
+But I am wide awake now.
+
+I have loved and lost, and had my heart broken.
+
+I am wide awake now.
+
+Goodbye prince charming, there is no more happy ending.
+
+
+
+VERSE 3
+
+Life found a way to bring me to reality.
+
+I have learned my lesson; I am no more naïve.
+
+My eyes are open, and I see everything clearly. 
+
+
+
+VERSE 4
+
+I used to think that friendship was for life, and that love would last forever.
+
+I was living in a dream, but I was too young to know better.
+
+Now I am older, and I know who my friends are.
+
+
+
+CHORUS
+
+
+
+VERSE 5
+
+I had created perfect scenarios in my head.
+
+My gentle heart has always been my weakness.
+
+I fight my own battles now, and I take care of myself.
+
+
+
+VERSE 6
+
+My back is filled with stab wounds, and my heart is a mess.
+
+But I have learned a lot from the experience.
+
+I now know enough to never take life for granted.
+
+CHORUS (REPEAT)
+
+
+
+ME:	In the accompanying video she was sitting on the sand on a beach, wearing a short white gown with her feet bare. The waves repeatedly hit her feet and then recede as she sang and cried.
+
+
+
+The third song for side B was a slow R&B song called Gratitude:
+
+
+
+GRATITUDE
+
+
+
+VERSE 1 
+
+Long ago, I was a naïve young girl,
+
+With a vision and nursing a dream,
+
+About to take on the world,
+
+With no one believing in me.
+
+
+
+VERSE 2
+
+I had no one to look up to, or to support me.
+
+I was on my own, I had to find my way.
+
+Along the way I found you,
+
+And you have been with me since then.
+
+
+
+CHORUS
+
+I want to say thank you.
+
+All the hard work and sweat,
+
+All the late nights and mistakes,
+
+Ensured my success.
+
+
+
+This is to show my appreciation.
+
+All the pain and heartbreaks,
+
+All the scandal and missed steps,
+
+Kept me grounded.
+
+
+
+Please accept my gratitude.
+
+All your love and support,
+
+All your cheering and passion,
+
+Keeps me motivated. 
+
+VERSE 3
+
+I started living the day I stepped out of my cage.
+
+To brave the big bad world by myself.
+
+Everyone said that I should give up,
+
+Be a good girl and conform.
+
+
+
+VERSE 4
+
+Many tried to punish me,
+
+For daring to challenge the status quo.
+
+But I was never going to fit in,
+
+I was made to stand out.
+
+
+
+CHORUS
+
+
+
+BRIDGE
+
+To all my fans and to all my friends,
+
+To all those who stuck with me through all those years,
+
+I am saying thank you.
+
+I am saying thank you.
+
+
+
+CHORUS (REPEAT)
+
+
+
+ME:	The video was a mash-up of all her stage performances showcasing cheering crowds and adoring fans. It also showed glimpses of the backstages of her shows and her plane rides to various destinations where she performed.     
+</div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem12" class="poem-page">
+    <h2> Chapter 11: BITTER/SWEET</h2>
+    <div class="poem-text">
+
+      ME:	The 'Bitter/Sweet’ Album sold more than three million copies in it’sfirst week and more than sixty million copies worldwide in the first year, making her the highest-selling female musician of all time and the most influential black person alive according to ‘Forbes Magazine’.
+
+That same year, ‘People’s Magazine’ named her the most beautiful person of the year 2011. Despite its rough beginning, it still turned out to be a great year for her.
+
+Her fans also forgave her for what happened and loved her once again. Her fan base blew up and she became even more famous.
+
+
+
+DR AYO:	The thing with fans is that they can hold a grudge for only so long. If you give them something new to focus on, they will forget why they were angry with you in the first place and boy, did she give them a lot to digest.
+
+
+
+BISI: To survive in this industry, you need to have a very thick skin. You need to learn to rise above every defeat. You see, not everybody can put in the effort to develop their talents. They would rather just take a bite out of your success. When you are lucky enough to get recognized and gain the necessary fame, there will always be people who will want to ride on your wave. It may be through them helping you in one way or the other, or by tearing you down. They don’t care how it affects you so long as they get their share. So, you need to learn how to bounce back from every hit. Sometimes, you laugh at yourself and make jokes on TV shows like ‘Saturday Night Live’ and sometimes, you work hard and produce music so good, that people will focus on your work and not the scandal. And that was exactly what Funke did.
+
+
+
+ME:	She featured a lot of artists in her music, including her former lovers and now BFFs G Thug and Kabelo who were always there for her whenever she needed him. But soon afterwards, Kabelo informed her that he was about to get married. Her heart was shattered. She never stopped loving him. Even though they had broken up ages ago, they were still together. They had been having an on-again-again relationship in secret. Hewas there whenever she needed him and she never thought for one second that he would move on with someone else, even though she did more than once. He never seemed to care about any other woman before. 
+
+KABELO:	She wished me well. I could sense that she wasn’t happy about it even though she had a big smile on her face. I knew she was just putting on a show and you know what, I myself wasn’t too happy about it. I wanted to move on, and I should but a part of me still wanted her back. I just thought that after all we had been through that it would never work out. We loved each other, but as soon as we get back together, we start fighting. It’s best we just be with other people. Thinking about it now, I feel that maybe I should have given us another go. I should have tried one more time. I think she was the one that got away from me.
+
+
+
+ME:	Funke was devastated. She was inconsolable. She managed to gather herself and attend his wedding but broke down as soon as she went back home. She locked herself in the house and wouldn’t leave for over a month.
+
+
+
+DR. AYO:	As her friend I was worried about her health. I was afraid that she was going to do something to hurt herself. And as if she read my mind, she warned me not to call Kabelo and to let him enjoy his marriage. I was going to but thank God, she stopped me. Now that I think about it, if I had done that, maybe he would have come running back to her and his wife would have left him.
+
+As her manager, I was also worried that she was not out there promoting her album. No matter how good your work is, if you don’t go out and promote it, and meet people, attend interviews, and hold live shows, record sales will tank. That is the way of the music industry and we have invested so much in that album. What with twenty videos and expensive recordings. She needed to get some of that money back.
+
+So, one morning, I went to her with her breakfast. I had planned on talking some sense into her. But when I knocked on her bedroom door and went in, I was surprised to see her not in her usual robes with unkempt hair but in a beautiful dress. She had showered and made her hair. She was wearing a beautiful Valentino dress and Jimmy Choo shoes and was already having breakfast on her bedroom balcony. She looked happy and rested. I joined her for breakfast and after letting me know that she was fine and that I shouldn’t worry about her, she informed me that she would want to go on a long music tour around the world to promote her album ’Bitter/Sweet’ to boost sales. I was both surprised and happy. So, we sat there and mapped out all the places she would go to perform, and the dates. It would take about six months for her to go around; starting in December 2011 and if everything went successfully as planned, she would make a butt load of money.
+
+
+
+ME:	Funke immediately set off on a worldwide ‘Bitter/Sweet’ tour, performing all over Europe, Asia, Australia, and Africa. She featured a lot of the artists who appeared on the album making it one of the most successful musical tours of all time. She made over two hundred 
+
+million dollars in one year and acquired a legion of new fans. But most importantly, she was able to get over her heartbreak.
+
+
+
+As soon as she came back home, she went on a shopping spree. She bought a mansion worth twelve million dollars in Beverly Hills. It was over fifty hectares and had four bedrooms, six and half baths, three living rooms, a game room, gym and sauna, a recording studio two large pools and a hot tub, two guest chalets, and large surrounding gardens.
+
+She then bought a second house in Waikiki, Hawaii, a beach house mansion worth a whopping twenty-five million Dollars. Waikiki was her Favorite vacation spot and she had always wanted to buy a beach house there. But she wanted to wait until she could afford one with all the creature comforts that she craved. In addition to five bedrooms, seven baths, a gym and a sauna, a recording studio, a library, two living rooms and a foyer, the house also had a large swimming pool, and a large hot tub and is right by the beach.
+
+
+
+AYO:	All you see when you look outside is endless blue. The house was surrounded by gardens and beach sand. Her nearest neighbours were half a mile away and she had ample security. You could go for weeks without seeing anyone and that was just what she was going for, a nice hideaway from prying eyes. Somewhere she could go and get away from it all. It was truly a heaven on earth, and she deserved every bit of it after all she had been through.
+
+
+
+ME:	She also bought a beautiful fifty-foot yacht which she named Melody after her alter ego. It had two bedrooms, a living room, a cinema, a kitchen, two upper decks and a pool and it cost a whopping one and a half million dollars. That yacht had a staff of twenty and a professional chef. She used it to go on a one-month vacation to recover from all that touring. She truly was living like a rock star.
+
+As soon as she got back from her vacation, she did what she had always wanted to do but never had the time to. She started her fashion line. She became interested in fashion when she competed in the Miss Nigeria pageant in the year 2000 but had to put that dream on hold to pursue her music career. But now, she had both the time and the money to follow that dream. The timing was also perfect because she could now use her fame to boost sales.
+
+She hired Grace, her fellow competitor in the pageant, who was now running her boutique in Abuja, Nigeria to run that business for her.
+
+
+
+GRACE:          We got along well during the pageant and even after she became famous, she still kept in touch with me from time to time. She knew I was interested in clothes, and she 
+
+found me running my own fashion boutique and offered me a job. I was so happy that I took it without even giving it a second thought. I mean, how many times can one get that kind of opportunity in life?
+
+
+
+ME:	Funke’s Fashion line ‘African Queen’ was launched in August of 2010 in Hawaii, to a choice audience of celebrities and socialites and it became an instant hit. It showcased her style which was a mixture of African prints and semi-gothic rock. Funke designed most of the clothes herself. She had been designing and storing them all those years and waiting for the perfect opportunity to take them public.
+
+
+
+GRACE:	I don’t know if that lady ever sleeps. She seemed to do everything and do it better than most people. She worked like a horse and achieved what most people will never do in three to four lifetimes. I mean, come on; does she have extra hours in her days or what?
+
+
+
+ME:	The fashion line ‘African Queen’ grossed over twenty million dollars in profit in its first year of launch and kept on growing bigger every year with Africans in America being her biggest buyers. It also sold well in African and Asian countries. Grace also did a good job in handling the business.
+
+By November 2012, she went on a two-month combined music and fashion tour around the world, introducing her Fashion line to new fans and making a load of money in the process. To make the touring easier for herself and everybody, she bought a private jet worth a whopping twelve million dollars. It was a Rayton Hawker 800, customized to suit her needs.
+
+On getting to Lagos, Nigeria, she visited the ‘Young Hearts Motherless Children Home’ and made a hefty donation. While there she met and fell in love with Baby Tim. His story was a sad one. He was found dumped in a trash yard, at less than two days old with a six-inch nail stuck in his head. The home paid for his operation and saved his life. By the time Funke got to him, he was already six months old and healthy. So, she adopted him and took him back to America with her.
+
+
+
+DR. AYO:	I think Funke was still suffering from depression due to Kabelo’s marriage. Even though she tried to hide it and pretended to be over him. She was still very sad. And adopting that Baby gave her the comfort and distraction that she desperately needed.
+
+
+
+ME:     She immersed herself in taking care of him. For the first time, in a long time, she went several months without writing music, touring, or doing anything other than just taking care of 
+
+her beautiful baby boy. She hired a nanny to help her with the work. He was the most important thing in her life and the only thing that mattered the most at that moment. He took her mind off everything else, and she was very happy.
+
+Dr. Ayo also helped with the baby. He was always around and was able to play the role of a father to baby Tim. He loved that boy too. He had two children from his previous marriage. And even though things didn’t end amicably between him and his ex-wife, he was still able to bring them over to play with baby Tim from time to time and sometimes, they would set up a play date, in which they would all spend time together, including his ex-wife. Slowly, he started getting back with Ronke. Things started to get better between him and his wife. Funke was happy for them. She thought that at least one of them should find happiness.
+
+
+
+DR. AYO:	Maybe it’s spending all that time with baby Tim. But I was determined to work things out with Ronke, for the sake of our kids. I dreaded having them grow up in a broken home. No child should ever have to go through that. And for a time, it seemed to work.
+
+
+
+ME:	Funke then wrote her book- ‘The Different Shades of Me’ in which she set things straight about herself. She talked about her life, growing up, her musical journey, her love life and heartbreaks, and so on. She did not hold back at all. She shocked everyone by revealing everything about herself. She was a person who had always guarded her privacy; letting people see only what she wanted them to. But in this book, she shone the light on herself for a change.
+
+
+
+DR. AYO:	Again, I think it had to do with her heartbreak. I think it was some kind of self-healing therapy for her. Talking about everything was like lifting a heavy load off her chest so that she could breathe and be free.
+
+
+
+ME:	The book was an instant hit. It was on top of the ‘New York Times Best Seller list’ of 2013 and sold millions of copies worldwide, making Funke even richer and more famous.
+
+That year, she was given the ‘Lifetime Achievement award’ at the American Music Awards (AMA), 2013; In addition to many other awards for different tracks on her Album ‘Bitter/Sweet’. In her one-minute emotional speech she talked about her son whom she referred to as the love of her life. There wasn’t a dry eye in the house by the time she was done. 
+
+FUNKE’S SPEECH
+
+“Few people get the opportunity to pursue their dreams in this world, and even fewer people get to achieve those dreams. I have been blessed to be among those who have found success and happiness doing what I love.
+
+Two years ago, I was honoured by my people. They welcomed me home and told me how proud they were of me. Nothing has ever come close to that feeling until today. This moment, now, as I am being honoured by my peers and the joy is indescribable.
+
+Thank you. Thank you to everyone who has ever helped me in one way or the other during my journey. It doesn’t matter how big or small your contribution was I wouldn’t have been here without it. So, thank you.
+
+I would also like to thank God for giving me my son, the love of my life, Timothy. He has brought me endless Joy, so much more than I have ever thought would be possible. Thank you, son, I dedicate this award to you.”
+
+
+
+
+
+BISI: She was wearing a strapless blue Ali Saab gown that flattered her figure. She looked so beautiful and yet, she was dateless. Dr. Ayo had offered to be her chaperone, but she declined and opted to go alone. She said that she had decided to get used to being alone because she had given up on men and love. She just wanted to concentrate on her music career and her son.
+    
+</div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem13" class="poem-page">
+    <h2> Chapter 12: LOVE AND LOSS</h2>
+    <div class="poem-text">
+
+      ME:	Later that year, she started writing songs for what was supposed to be her ninth studio album. It wasn’t titled yet, but she wrote the first song for baby Tim, an emotional ballad called ‘My Joy’’. It was a pop and R&B song that was smooth and breezy, with very catchy lyrics. The video featured her and baby Tim doing everyday things and sometimes playing in the park. They were both happy and glowing.
+
+
+
+MY JOY
+
+
+
+You are the one that I think of,
+
+When I wake up in the morning.
+
+The one that I dream of,
+
+When I go to bed at night.
+
+
+
+You hold my heart in your hands.
+
+I owe you, my life.
+
+Even in my darkest nights,
+
+You shine bright.
+
+
+
+CHORUS
+
+
+
+You are my joyyyy.
+
+The reason I smile.
+
+You are my joyyyy.
+
+Thank God you are mine.
+
+
+
+I have searched the world over, 
+
+For the meaning of life.
+
+Searched high and low,
+
+For some peace in my life.
+
+
+
+Then you showed up and
+
+You were everything I needed.
+
+Even though I am not perfect,
+
+You loved me all the same.
+
+
+
+CHORUS
+
+
+
+I don’t know how I got so lucky,
+
+Or why you loved me.
+
+But with you here by my side,
+
+Everything will be alright.
+
+
+
+CHORUS
+
+
+
+ME:	The song was well received by fans and quickly found itself to No. 1 on the Billboard 100 charts and mainstream Top 40 and stayed there for weeks. It was certified five times platinum by the Recording Industry Association of America (RIAA) and sold over 13 million copies worldwide. It also became the most downloaded song of all time with a record 1.5 billion downloads in the first week of its release.
+
+
+
+DR. AYO:	It was a song that everyone could relate to. Even if you don’t have a child, you could relate to it as a love song. It had the ability to move you.
+
+
+
+ME:     She wrote a second song called- ‘When we were young’. It was another emotional ballad that was obviously about her failed relationship with Kabelo. The words of the song 
+
+reflected on her regrets and nostalgia about the good old days. It also hinted at acceptance that it was over.
+
+
+
+WHEN WE WERE YOUNG
+
+
+
+VERSE 1
+
+I have made a lot of mistakes in my life,
+
+But I always found my way back.
+
+I always got a second chance,
+
+To go back and make things right.
+
+
+
+VERSE 2
+
+But the moment we said goodbye,
+
+I had a sick feeling inside,
+
+That it was the final time,
+
+And nothing I say or do could make it right.
+
+
+
+
+
+CHORUS
+
+When we were young,
+
+Things were simpler,
+
+Life was a song,
+
+Everything was a wonder.
+
+
+
+When we were young,
+
+We were carefree and wild.
+
+The world was our playground,
+
+And all we had was time. 
+
+
+
+VERSE 3
+
+If I could go back to that very night we said goodbye,
+
+I would swallow my pride and apologize,
+
+I would do everything in my power to make things right.
+
+You see baby, I am now older and wise.
+
+
+
+VERSE 4
+
+Oh, how times have changed, and everything is clear.
+
+Now I am sitting here with eyes full of tears,
+
+Wondering if you still think of me or never.
+
+Do I still have a place in your heart?
+
+
+
+CHORUS
+
+
+
+VERSE 5
+
+I want to go back to the good old days.
+
+I want you to hold me again,
+
+In your arms and keep me safe,
+
+And never let go of me again.
+
+
+
+VERSE 6
+
+Words cannot describe how much I miss you.
+
+I still want you and I need you.
+
+How could I begin to move on?
+
+But I love you enough to let you go. 
+
+CHORUS (INFINITY)
+
+
+ME:	By March 2014, Dr. Ayo had a heartbreak of his own. For several months, he and his ex-wife had been working things out with each other and getting closer. But just as it was starting to look like they were getting back together, she eloped with another man. Dr. Ayo was devastated.
+
+
+
+DR. AYO:	I did not even know that she was seeing another man. She never mentioned him. I saw them together once, but she claimed that he was just a friend. I didn’t even put them together in my head. And when I asked her why she would do that to me, she replied that it was because she didn’t know how to tell me. She said that she knew my hopes were raised and she couldn’t look me in the eye and tell me about it. I had to find out two days before the wedding, from her sister.
+
+
+
+ME:	Again, Funke was with him throughout his grieving period. Then, when he began to get better, she surprised him with a marriage proposal.
+
+
+
+DR. AYO:	We were sitting on her balcony on a beautiful Monday evening and playing with baby Tim. She looked at me and said-
+
+“Ayo, you are my best friend, the only person in the world who has never let me down. You have been with me through thick and thin and have always been on my side, no matter what. I love you for that.”
+
+I said – “I love you too Funke. You mean the world to me.”
+
+Then she got even more serious and said – “Marry me”. I smiled. She said again – “Marry me Ayo. Let’s be husband and wife. Let’s be parents of Tim and maybe even have more children. Let’s be more than friends and business partners. Let’s be one.”
+
+I said – “yes Funke. I will marry you. And we kissed”. No explanations are needed. We’ve both been through enough heartbreaks and disappointments to know that that was a great opportunity and that we were both best suited for each other.
+
+
+
+ME:     Two weeks later, they got married in a very small wedding ceremony attended by only a handful of close friends. But once the news got out, it caused a media frenzy. No one saw it 
+
+coming. But everyone was happy for them. They couldn’t be more perfect for each other. It was a match made in Hollywood heaven.
+
+They went on a family honeymoon with baby Tim and his nanny to the Caribbean Islands for a week, then to Tokyo, Japan for another week.
+
+When they got back from the honeymoon, they settled in her Hawaii home and stayed there for another month before Funke suggested that she wanted to go home to Nigeria to make amends with her parents. It had been weighing heavily on her through all these years and even though she still hated them for what they did to her, she was still willing to forgive them and bring them back into her life.
+
+
+
+DR. AYO:	I remember the day she left for Nigeria. We were both crying. I don’t know why, but it felt like the end, so painful. We hugged and kissed and hugged and kissed again. She almost changed her mind about going, but I insisted she go. She decided to go alone and make peace with her family first; before going back again together with me and baby Tim. I thought it was a good idea. Little did I know that she was never coming back to us again.
+
+
+
+ME:	Funke did go back to Nigeria and successfully made peace with her parents. She asked for forgiveness from them and was forgiven. They also apologized to her for what they did to her, and she forgave them. Families near and far came to see her and welcomed her. Everyone loved her and was proud of her. It was a beautiful reunion. The world was right again.
+
+When she told her parents about her new husband and child, they said they knew. They had been following her career all along but decided to give her some space. They knew she would reach out to them when she was ready.
+
+
+
+Even her first husband reached out to her. He wanted her forgiveness for what he did to her too, and wished her well. He also wanted to meet her son and even offered to adopt him if she would let him. But she just laughed and declined reminding him that she was married. In the end, her visit was a very successful one. She then said her goodbyes to everyone before boarding the ill-fated flight back home. Little did she know that that was her final goodbye to them.
+
+
+
+BISI: I think Funke was lucky that she was able to make things right with her parents before she died. No matter what the situation is, never let one of you leave this world while your parents are angry with you. 
+
+FUNMI (SISTER):	I love my sister and I am glad that she came home one last time before leaving us for good. It would have been incredibly cruel if she died before we saw her again.
+
+
+
+DR. AYO:	She called me from the plane just before take-off and told me that she was happy and finally at peace. She said – “Everything is going to be alright now. I am coming home, honey”.
+
+
+
+ME:	On the morning of November 7, 2014, Funke Adeniran boarded her private jet – the ill-fated Rayton Hawker 800, from Nigeria to America, along with her pilot and a crew of ten.
+
+Thirty minutes into the flight the plane started to experience engine problems. The pilot sent a distress call to the control tower of the Murtala Muhammad International Airport, Lagos but lost contact shortly afterwards and suddenly fell off the radar before he could get any help. It was believed that the plane crashed headlong into the Atlantic Ocean and sank. To this day, neither the bodies nor any piece of the wreckage had been found.
+
+An investigation was carried out but remains inconclusive. No one can say for sure what happened. All they know is what the pilot reported minutes before disappearing from the radar. And that is; that the plane was having engine problems, whatever that means.
+
+
+
+DR. AYO:	I received the news at our Beverly Hills residence. She had called me a few hours earlier and told me they were taking off. Of course, she wouldn’t arrive until about eight hours later, but I was eagerly awaiting her arrival. I had already started with the decorating of the house with welcome signs, and I planned to cook a nice dinner for us. I couldn’t believe my ears when they told me. I just froze by the phone.
+
+
+
+FUNMI:	We just got back home from the airport when we got the news that her plane was in distress. They said that it fell off the radar, but they are still trying to make contact with it. It was like a blow to the gut. I just couldn’t believe it. I refused to accept that my sister came back to us, only to be taken away again so cruelly. It was unbelievable.
+
+My mother broke down and started crying immediately. My father was consoling her, but I could see it in his eyes that he was crying inside. They knew. From the moment they got the call they knew deep inside them that she was dead. It is a parent thing, I guess.
+
+
+
+ME:     A search party was sent to the last place the pilot made the distress call from. And for six months they combed the Ocean but to no avail. They couldn’t even find a piece of debris 
+
+let alone a body. It was as if they disappeared from the face of the earth. No one knows what became of them. But one thing for sure is that they were dead.
+
+
+
+DR. AYO:	After months of praying and sleepless nights, we just accepted our fate. What can I say, people live, and people die. No matter how much we love someone, we have to let them go at some point. But my heart broke into a million pieces. We just found each other. We were supposed to be happy and have our forever after. But it wasn’t meant to be.     
+</div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+<section id="poem14" class="poem-page">
+    <h2> Chapter 13: MELODY FOREVER</h2>
+    <div class="poem-text">
+
+      ME:	After six months of searching, the party was called off. Her father and husband both accepted that she was dead and urged everyone else to move on. There was no point in hanging on. If she was alive; she would have surfaced by now. The families of the pilot and the other crew members also agreed to let it go.
+
+Tributes started pouring in from around the world, from friends, family, fellow celebrities, and fans from everywhere. Everyone took to the internet and messages were left on her Twitter and Facebook pages. Some of them include:
+
+
+
+TRIBUTES TO FUNKE
+
+
+
+The world has just lost a true gem. May you rest in perfect peace, Funke.
+
+Alvin Martin (G-Thug)
+
+
+
+Once in your lifetime, you come across an extraordinary human being with incredible talents. I am honoured to have met you Funke. May you rest in Peace.
+
+DJ Matt
+
+
+
+I am deeply saddened to hear about the death of Funke Adeniran. She was amazingly talented and an inspiration to all. Goodbye.
+
+Henry (Black rose)
+
+
+
+I am absolutely devastated by the death of Funke Adeniran. May she rest in peace.
+
+Nick Brandon.
+
+
+
+With a heavy heart, we regret to inform you of the passing of our beloved daughter; Oluwa-Funke Adeniran. We sincerely appreciate all your kind words and prayers. But we ask for some privacy to be able to grieve our loss. Thank you. 
+
+Funke’s Family
+
+
+
+My mind cannot even begin to comprehend the magnitude of this loss. My heart is broken. I still cannot believe that you are gone. Goodbye, my love. Goodbye, my best friend.
+
+Dr. Ayodele David (Husband)
+
+
+
+Rest in peace my favorite African Queen.
+
+Grace
+
+
+
+My thoughts are with her family at this difficult time.
+
+Nick (The Silver Rose)
+
+
+
+Goodbye, my darling. You were one in a Billion.
+
+Kabelo Masophsa
+
+
+
+Rest in peace to the coolest, most kind-hearted person I have ever known.
+
+BISI
+
+
+
+You were more than my best friend. You were my sister. RIP
+
+Cynthia
+
+
+
+There will never be another like her. She was unique in every way. Special!
+
+Olajide Abayomi (Sway)
+
+
+
+
+
+ME:     A memorial ceremony and a burial were held for all of the victims of the crash. Funke’s was, according to Islamic rites since she was a Muslim. After that, her lawyer read her will. 
+
+Surprisingly, in her will, she left a quarter of her wealth to her son, another quarter to her husband, another quarter to be shared to family members, including her extended family members and friends whom she mentioned by name, each. Finally, the last quarter was to go to all of her different charities. She also shared her numerous awards, among the members of her family, one for each person, with the lifetime achievement award and the African of the year award going to her husband and son respectively. She said she wanted each person to have a piece of her when she was gone.
+
+
+
+FUNMI:	It was as if she knew we were going to outlive her. She made sure that everyone got something from her and that everyone remembered her. It was both wonderful and heartbreaking.
+
+
+
+CYNTHIA:	Funke had always been dramatic. So, I wasn’t surprised that she went out with a bang like that. (Laughs)
+
+
+
+ME:	After the will, and the awards were shared. Everyone agreed to make a special tribute to her. So, they all submitted the awards and turned her Beverly Hills mansion into a museum in her Honor. The trophies were arranged beautifully in every room of the house. Also, everything else of hers, that is including her clothes, makeup, Jewry, were there as she left them. It was as if she still lived there. They wanted you to feel her presence as soon you walk into the house. Pictures, including family pictures hung on the wall. The museum was opened to visitors from all over the world and it is still open 24 hours, seven days a week. And once a year on the date of her death, they get together to celebrate her life.
+
+Her music never stopped even after her death. She left over thirty written songs and another eight unfinished ones. So, her widower husband who happened to be her manager while she was alive, decided to release them slowly over time in the hopes of generating more income while also hoping to keep her name and memory alive.
+
+
+
+On the 1st of October 2015, her song ‘Memories’ was released to eager fans as part of her album ‘Funke – Now and Forever’. It was a success. Her fans loved it. Her memory was still alive in their hearts and the song hit just the right notes. 
+
+MEMORIES
+
+
+
+Of Friends gained and love lost.
+
+Nothing behind me everything ahead of me.
+
+
+
+Of fleeting beauty and the laughter that remains.
+
+Time passed and wisdom gained.
+
+
+
+As we turn the pages of our lives,
+
+We try to live as in poetry.
+
+
+
+With stubbornness, we re-write our dreams.
+
+Trying to change destiny that was written with a golden pen.
+
+
+
+And in old age, we revise our work.
+
+We laugh, we cry, but in the end we accept everything as fate.
+
+
+
+The ghost of the past always lurking near,
+
+Trying to pull you down into the abyss.
+
+
+
+The fight to keep holding on is always the hardest,
+
+But quitting is never an option.
+
+
+
+
+
+DR. AYO:	It was among the songs she recorded for what was supposed to be part of the album ‘Funke – Now and Forever’. It was more of a poem than a song and very deep. She had already recorded it but didn’t get around to making a video of it. 
+
+ME:	‘Memories’ is a soulful R&B song that was accompanied by the sound of a piano and an acoustic guitar. It is a song about love, loss, heartbreak and becoming strong again. It hinted at nostalgia, regrets and finally accepting one’s fate.
+
+It was well received by fans and attained international commercial success, reaching no. 1 in various countries and it topped the Billboard 100 charts.
+
+Funke has topped the Billboard 100 charts more than any other female musician in the world. More than fifty per cent of her songs have gotten to the coveted no. 1 position and stayed there for several weeks. It just goes to show how incredibly talented she was. And even after death, she continued to wow!
+
+
+
+An accompanying video was made for the album. It was a combination of home videos of Funke doing different things. From playing with her son at home to travelling to various holiday destinations, being backstage on her tours, and so on. It ramped up thenostalgicvolume and gave the song heart.
+
+
+
+DR. AYO:	At first, I thought about getting animators to make a video for the song. But then I watched one of the home videos that we made, and I immediately got inspired. She was a very happy and energetic person. Despite the negative blows she got over the years, she still managed to laugh and be happy. You cannot watch her home videos and not feel the positive energy emanating from them. Therefore, they made the perfect video for the song.
+
+
+
+
+
+ME:	The other eleven songs were also released, and the album was named- ‘Funke - Now and Forever’. Some of the other videos on the album include an upbeat, quick-tempo number called ‘Somebody somewhere’, an R&B number called ‘Now and Forever’, and a slow jazz number called ‘when you fall in love and Smile.’ They were all no. 1 hits. The seven other songs on the album did very well too.
+
+The album generated over ten million dollars in sales worldwide, in the first year of its release, probably the most successful album ever by a dead musician. The money went to her late husband, her son and her parents equally.
+
+
+
+GRACE:	That song made so much money you wouldn’t believe it. That woman kept making money even after her death. Her inheritance alone was over seven hundred million. Add that to the money her new album made, plus the various royalties still being paid to her family from previous albums, book, and movie sales and also her fashion line which is still 
+
+being run by me. Honestly, unless those people get greedy at some point, they never have to work a day in their lives.
+
+
+
+CYNTHIA:	I think that writing was Funke’s escape from the world. It is what she was best at, even better than singing. She loved to write, and she wrote all the time. In her lifetime she had written over three hundred songs and was only able to sing a fraction of them. Many of the songs she wrote, she sold to other artists and those songs were hits. Even after she died, she left behind over thirty songs.
+
+
+
+DR.AYO:	I think the reason for Funke’s longevity and success is her ability to reinvent herself. She was not shy or afraid of change. She went from one musical genre to another. Her albums went from Afro-pop to R&B to rock, to disco to Jazz and so on. She kept her fans guessing as to what she was about to do next, and she was not boring at all. In the entertainment business, you are always at the risk of becoming redundant and boring. The moment your fans consider you boring, you are done. It doesn’t matter how good you were before then. So, Funke was able to keep her fans happy and entertained with her ever-changing music, acting, and writing styles.
+
+
+
+BISI: I miss her. Oh my God, I miss her so much. She was such a wonderful person. The most caring and kind-hearted person that I know. It’s very sad the way she died, but she left behind, a legacy to behold. Rest in peace, my dear sister.
+
+
+
+ME:	And there you have it. Funke Adeniran, is a musician, an actress, a philanthropist, a fashion icon and an absolute supernova. She began from a moderately humble beginning in Nigeria and went on to conquer Hollywood. She will remain in our hearts as a Legend. May she rest in peace.
+
+My name is Hadiza Bagudu. I hope you enjoyed reading this memoir. 
+
+DISCOGRAPHY
+
+
+
+
+ALBULMS
+
+
+
+1.	AGAINST ALL ODDS---(2001 AFRIKA RECORDS)
+
+
+
+
+
+1.	Second Chance
+
+2.	Jaded
+
+3.	Secret Admirer
+
+4.	Too much too soon
+
+5.	Handsome boy
+
+6.	Castles
+
+7.	Roses
+
+8.	Dance for me
+
+9.	Sisi Eko
+
+
+
+
+
+
+
+
+
+
+2.	PHOENIX---------(2002 ROSE RECORDS)
+
+
+
+1.	Emotional
+
+2.	Alive
+
+3.	I am human 
+
+4.	Hold my hand
+
+5.	Daddy’s girl
+
+6.	Ajegunle
+
+7.	Friends for life
+
+8.	Hello Stranger
+
+9.	Beautiful
+
+
+
+3.	BLOSSOM---------(2004 FLY RECORDS)
+
+
+
+1.	Still breathing
+
+2.	Jewels in the sky
+
+3.	Fire me up
+
+4.	The Perfect Storm
+
+5.	The sweetest lies
+
+6.	My Darling
+
+7.	Memories of love
+
+8.	Nightingale
+
+9.	Fly
+
+
+
+4.	KEEPING FAITH---------(2004 BOSS RECORDS WITH THE SILVER ROSE BAND)
+
+
+
+1.	Forever more
+
+2.	Lone wolf
+
+3.	Danger
+
+4.	Believe
+
+5.	Hate 
+
+6.	Enough
+
+7.	Earth’s cry
+
+8.	Scream
+
+9.	Don’t say a word
+
+10. The edge
+
+11. Thug Love ft. G-Thug
+
+12. Insomnia
+
+13. Inner demons
+
+
+
+5.	DARK CHOCOLATE---------(ROSE RECORDS)
+
+
+
+1.	Silky smooth
+
+2.	Sexy
+
+3.	Sweet and sour
+
+4.	Black beauty
+
+5.	The calm
+
+6.	Soar
+
+7.	Juice
+
+8.	Only you
+
+9.	Waves
+
+10. My friend
+
+11. Bricks and Stones
+
+12. Stingray
+
+
+
+
+
+6.	RETRO---------(ROSE RECORDS) 
+
+
+
+1.	Nasty
+
+2.	Under the moonlight
+
+3.	Tap Tap Tap
+
+4.	Boogie night
+
+5.	It’s on
+
+6.	Eclipse
+
+7.	Sunny side up
+
+8.	Not my cup of tea
+
+9.	Take my breath away
+
+10. Thank you
+
+11. Secrets of the heart
+
+12. Flower Child
+
+
+
+7.	GREY SKIES---------(ROSE RECORDS)
+
+
+
+1.	Falling for you
+
+2.	Silver lining
+
+3.	Stalker
+
+4.	Broken promises
+
+5.	Yesterday
+
+6.	New age
+
+7.	You are the one
+
+8.	Who you are
+
+9.	Blessed
+
+10. Cherish you. 
+
+11. Fantasy
+
+12. Light show
+
+13. My heart
+
+
+
+
+
+8.	BITTER/SWEET---------(ROSE RECORDS)
+
+(A) BITTER
+
+
+
+1.	Hater
+
+2.	Burn
+
+3.	Snake Eyes
+
+4.	Stolen Moments
+
+5.	Free Fall
+
+6.	She-Queen
+
+7.	All that glitters
+
+8.	Bipolar
+
+9.	Dear Diary
+
+10. Awake
+
+11. Missing you tonight
+
+12. If you leave, don’t come back
+
+13. Picking up the pieces
+
+14. Regrets
+
+15. Goodbye
+
+
+
+(B)	SWEET 
+
+1.	The open road
+
+2.	Sweet Heaven
+
+3.	Rainbows and Ponies
+
+4.	Heat
+
+5.	Glass Slipper
+
+6.	Some days
+
+7.	This thing called love
+
+8.	My heart beats only for you
+
+9.	Hold on
+
+10. Call me
+
+11. That night
+
+12. My baby
+
+13. Gratitude
+
+14. A new me
+
+15. Supernova
+
+
+
+9.	FUNKE - NOW AND FOREVER---------(ROSE RECORDS)
+
+
+
+1.	My Joy
+
+2.	Memories
+
+3.	Somebody somewhere
+
+4.	Now and forever
+
+5.	When you fall in love and smile
+
+6.	When we were young
+
+7.	Hustler Chick
+
+8.	Family 
+
+9.	Emotions
+
+10. Ashes
+
+11. I am your woman
+
+12. Roses in bloom 
+
+FILMOGRAPHY
+
+
+
+
+MOVIES
+
+a)	The Wiccan
+
+b)	The Morning After
+
+c)	Blood Brothers 
+
+TELEVISION
+
+
+
+a)	Saturday night live
+
+b)	How I met your mother
+
+c)	The Big Bang Theory
+
+d)	The Vampire Diaries 
+
+OTHERS
+
+
+
+
+BOOKS
+
+
+
+a)	The different shades of me.
+
+
+
+
+
+FASHION LINE
+
+
+
+a)	African Beauty line
+
+
+
+ENDORSEMENTS
+
+
+
+a)	Coca-cola
+
+b)	Cover Girl
+
+c)	Royal Essence
+
+d)	Star Beauty Soap
+
+e)	Deep Roots Hair Products
+
+
+
+CHARITIES
+
+
+
+a)	Second Chance Foundation
+
+b)	UN ambassador to Nigeria 
+
+AWARDS
+
+
+
+
+1.	African Music Awards AMA 2004
+
+2.	Nigerian Music Awards
+
+3.	AMA Best new song (The Perfect Storm) 2004
+
+4.	Ten golden globes
+
+5.	Eight Grammies
+
+6.	Fifteen Billboard awards
+
+7.	Top Selling Artist of 2008
+
+8.	Best new artist
+
+9.	Best new album
+
+10. Forbes 100 list of most powerful black musicians
+
+11. Chanel O African award
+
+12. Trace TV awards
+
+13. Kora awards.
+
+14. B E T awards
+
+15. MOBO awards
+
+16. Soul train awards
+
+17. MTV Africa Music awards
+
+18. City Magazine awards
+
+19. African Muzik awards
+
+20. Ghana music Awards
+
+21. Hip Hop world awards
+
+22. Nigerian Music awards
+
+23. Future Africa award 
+
+24. Nigerian Entertainment Awards (NEA)
+
+25. World Music awards
+
+26. Most Beautiful Person 2011 (People Magazine)
+
+27. Most Influential Black Person 2011 (Forbes)
+
+28. Lifetime Achievement Awards 2013     
+
+</div>
+    <span class="back-btn" onclick="goHome()">← Back to Chapters</span>
+  </section>
+
+
+  <footer>
+    <p>© 2018 Hadiza Bagudu — All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function openPoem(id) {
+      document.getElementById("home").style.display = "none";
+      document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0,0);
+    }
+
+    function goHome() {
+      document.getElementById("home").style.display = "grid";
+      document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
+      window.scrollTo(0,0);
+    }
+
+    // Auto-format poems
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".poem-text").forEach(poem => {
+        const text = poem.textContent.trim();
+        const withParagraphs = text
+          .split("\n\n")
+          .map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`)
+          .join("");
+        poem.innerHTML = withParagraphs;
+      });
+    });
+ // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable Ctrl+S, Ctrl+U, F12 to prevent viewing source and saving the page
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 's' || e.key === 'u') || e.key === 'F12') {
+                e.preventDefault();
+                alert("This action is disabled.");
+            }
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable copying and cutting content
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('Copying is disabled on this website.');
+        });
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+            alert('Cutting is disabled on this website.');
+        });
+
+        // Disable image saving (for browsers like Chrome)
+        document.addEventListener('mousedown', function(e) {
+            if (e.target.tagName === 'IMG' && e.button === 2) {
+                e.preventDefault();
+            }
+        });
+// ===== Disable Print Screen (Screenshots) =====
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'PrintScreen') {
+        e.preventDefault();
+        alert('Screenshots are disabled on this website.');
+    }
+});
+  </script>
+</body>
+</html>
