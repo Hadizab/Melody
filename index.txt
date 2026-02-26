@@ -202,7 +202,12 @@ footer {
 #home {
   display: grid !important; /* Force show on load */
 }
-  </style>
+/* Ensure homepage is visible by default */
+#home {
+  display: grid !important;
+}
+
+</style>
 </head>
 <body>
   <header class="hero">
@@ -4800,78 +4805,11 @@ AWARDS
   </footer>
 
   <script>
-    function openPoem(id) {
-      document.getElementById("home").style.display = "none";
-      document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      window.scrollTo(0,0);
-    }
-
-    function goHome() {
-      document.getElementById("home").style.display = "grid";
-      document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
-      window.scrollTo(0,0);
-    }
-
-    // Auto-format poems
+      // ===== SHOW HOMEPAGE ON LOAD =====
     document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".poem-text").forEach(poem => {
-        const text = poem.textContent.trim();
-        const withParagraphs = text
-          .split("\n\n")
-          .map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`)
-          .join("");
-        poem.innerHTML = withParagraphs;
-      });
-    });
- // Disable right-click
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // Disable Ctrl+S, Ctrl+U, F12 to prevent viewing source and saving the page
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 's' || e.key === 'u') || e.key === 'F12') {
-                e.preventDefault();
-                alert("This action is disabled.");
-            }
-        });
-
-        // Disable drag and drop
-        document.addEventListener('dragstart', function(e) {
-            e.preventDefault();
-        });
-
-        // Disable copying and cutting content
-        document.addEventListener('copy', function(e) {
-            e.preventDefault();
-            alert('Copying is disabled on this website.');
-        });
-        document.addEventListener('cut', function(e) {
-            e.preventDefault();
-            alert('Cutting is disabled on this website.');
-        });
-
-        // Disable image saving (for browsers like Chrome)
-        document.addEventListener('mousedown', function(e) {
-            if (e.target.tagName === 'IMG' && e.button === 2) {
-                e.preventDefault();
-            }
-        });
-// ===== Disable Print Screen (Screenshots) =====
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'PrintScreen') {
-        e.preventDefault();
-        alert('Screenshots are disabled on this website.');
-    }
-});
-<script>
-    // ADD THIS RIGHT AFTER YOUR FUNCTIONS
-    // Show homepage by default when page loads
-    document.addEventListener("DOMContentLoaded", () => {
-      goHome(); // This ensures homepage is visible on load
+      goHome(); // Ensure homepage is visible immediately
       
-      // Your existing auto-format code
+      // Auto-format poems
       document.querySelectorAll(".poem-text").forEach(poem => {
         const text = poem.textContent.trim();
         const withParagraphs = text
@@ -4881,7 +4819,7 @@ document.addEventListener('keydown', function(e) {
         poem.innerHTML = withParagraphs;
       });
     });
-    
+
     function openPoem(id) {
       document.getElementById("home").style.display = "none";
       document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
@@ -4894,11 +4832,41 @@ document.addEventListener('keydown', function(e) {
       document.querySelectorAll(".poem-page").forEach(p => p.classList.remove("active"));
       window.scrollTo(0,0);
     }
-    
-    // ... rest of your protection code
-</script>
+
+    // ===== PROTECTION CODE =====
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === 's' || e.key === 'u') || e.key === 'F12' || e.key === 'PrintScreen') {
+        e.preventDefault();
+        alert("This action is disabled.");
+      }
+    });
+
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+      alert('Copying is disabled on this website.');
+    });
+
+    document.addEventListener('cut', function(e) {
+      e.preventDefault();
+      alert('Cutting is disabled on this website.');
+    });
+
+    document.addEventListener('mousedown', function(e) {
+      if (e.target.tagName === 'IMG' && e.button === 2) {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
+
 
 
