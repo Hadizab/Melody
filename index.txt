@@ -188,7 +188,20 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
 }
+/* Change this */
+.poem-page {
+  display: none;
+}
 
+/* To this */
+.poem-page {
+  display: none;
+}
+
+/* And make sure home is visible by default */
+#home {
+  display: grid !important; /* Force show on load */
+}
   </style>
 </head>
 <body>
@@ -4887,4 +4900,5 @@ document.addEventListener('keydown', function(e) {
   </script>
 </body>
 </html>
+
 
